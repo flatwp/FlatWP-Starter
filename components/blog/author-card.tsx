@@ -13,7 +13,6 @@ import {
   Award,
   Mail,
   Phone,
-  ArrowRight,
 } from "lucide-react";
 import { Author } from "@/lib/wordpress/adapters/author";
 import { Badge } from "@/components/ui/badge";
@@ -151,15 +150,6 @@ export function AuthorCard({
                   </div>
                 )}
               </div>
-
-              {/* View Profile Link */}
-              <Link
-                href={`/author/${author.slug}`}
-                className="inline-flex items-center gap-2 text-sm text-primary hover:underline mt-4"
-              >
-                View Full Profile
-                <ArrowRight className="w-4 h-4" />
-              </Link>
             </div>
           </div>
         </div>

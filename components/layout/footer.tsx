@@ -5,10 +5,10 @@ import { Github, Star } from "lucide-react";
 export function Footer() {
   return (
     <footer className="border-t border-border/40 bg-background">
-      <div className="container mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-          <div className="lg:col-span-1">
-            <div className="flex items-start gap-3">
+      <div className="container mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_auto]">
+          <div>
+            <div className="flex items-start gap-3 max-w-md">
               <Link href="/" className="flex-shrink-0">
                 <Image
                   src="/logos/orange/orange-ico-light.svg"
@@ -25,10 +25,10 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-8">
+          <div className="grid grid-cols-2 gap-6 lg:gap-10">
             <div>
               <h3 className="text-sm font-semibold">Project</h3>
-              <ul className="mt-4 space-y-3">
+              <ul className="mt-2 space-y-1">
                 <li>
                   <Link
                     href="#features"
@@ -50,7 +50,7 @@ export function Footer() {
 
             <div>
               <h3 className="text-sm font-semibold">Resources</h3>
-              <ul className="mt-4 space-y-3">
+              <ul className="mt-2 space-y-1">
                 <li>
                   <Link
                     href="https://docs.flatwp.com"
@@ -74,7 +74,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-border/40 pt-8">
+        <div className="mt-8 border-t border-border/40 pt-6">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <p className="text-sm text-muted-foreground">
               &copy; {new Date().getFullYear()} FlatWP. All rights reserved. MIT License.
