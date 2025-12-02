@@ -47,7 +47,7 @@ export function BlogPostCard({ post }: BlogPostCardProps) {
 
       {/* Excerpt */}
       {post.excerpt && (
-        <p className="text-muted-foreground mb-6 line-clamp-3">{post.excerpt}</p>
+        <p className="text-muted-foreground mb-6 line-clamp-2">{post.excerpt}</p>
       )}
 
       {/* Author & Date Meta */}

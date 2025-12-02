@@ -55,7 +55,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const readTime = calculateReadingTime(post.content);
 
   // Fetch related posts based on categories/tags
-  const relatedPosts = await getRelatedPosts(post, 4);
+  const relatedPosts = await getRelatedPosts(post, 2);
 
   return (
     <div className="relative min-h-screen">
