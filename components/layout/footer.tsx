@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Github, Twitter } from "lucide-react";
+import { Github, Twitter, Star } from "lucide-react";
 
 export function Footer() {
   return (
@@ -24,15 +24,6 @@ export function Footer() {
               </p>
             </div>
             <div className="mt-6 flex gap-4">
-              <Link
-                href="https://github.com/flatwp"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground transition-colors hover:text-foreground"
-                aria-label="GitHub"
-              >
-                <Github className="h-5 w-5" />
-              </Link>
               <Link
                 href="https://twitter.com/flatwp"
                 target="_blank"
@@ -111,10 +102,28 @@ export function Footer() {
         </div>
 
         <div className="mt-12 border-t border-border/40 pt-8">
-          <p className="text-center text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} FlatWP. All rights reserved. MIT
-            License.
-          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p className="text-sm text-muted-foreground">
+              &copy; {new Date().getFullYear()} FlatWP. All rights reserved. MIT License.
+            </p>
+
+            <Link
+              href="https://github.com/flatwp"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-3 text-sm transition-all hover:scale-105"
+            >
+              <div className="flex items-center gap-2 text-muted-foreground">
+                <span>Love what we're building?</span>
+                <span className="hidden sm:inline">Show your support with a star on GitHub</span>
+                <span className="sm:hidden">Star us on GitHub</span>
+              </div>
+              <div className="flex items-center gap-2 rounded-full bg-muted px-3 py-1.5 transition-colors group-hover:bg-muted/80">
+                <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                <Github className="h-4 w-4" />
+              </div>
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
