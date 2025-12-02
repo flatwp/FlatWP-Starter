@@ -1,0 +1,25 @@
+# Import author fragment
+#import '../fragments/author.graphql'
+
+# Get author by slug with all posts
+query GetAuthorBySlug($slug: ID!) {
+  user(id: $slug, idType: SLUG) {
+    ...AuthorWithPosts
+  }
+}
+
+# Get all author slugs for static generation
+query GetAllAuthorSlugs {
+  users(first: 100) {
+    nodes {
+      slug
+    }
+  }
+}
+
+# Get author basic info (for use in post queries)
+query GetAuthorBasic($slug: ID!) {
+  user(id: $slug, idType: SLUG) {
+    ...AuthorFields
+  }
+}

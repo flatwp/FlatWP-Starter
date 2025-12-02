@@ -94,9 +94,9 @@ export function FeaturedPostCard({ post, priority = false }: FeaturedPostCardPro
           <div className="flex items-center gap-4 mb-6 text-sm text-muted-foreground flex-wrap">
             {post.author && (
               <div className="flex items-center gap-2">
-                {post.author.avatar ? (
+                {post.author.avatar?.url ? (
                   <img
-                    src={post.author.avatar}
+                    src={post.author.avatar.url}
                     alt={post.author.name}
                     className="w-8 h-8 rounded-full ring-2 ring-border"
                   />

@@ -5,6 +5,7 @@
 
 import { stripHtml, cleanExcerpt } from '@/lib/utils/text';
 import { adaptImage, type Image } from './image';
+import { adaptAuthor, type Author } from './author';
 
 export interface Post {
   id: string;
@@ -13,10 +14,7 @@ export interface Post {
   excerpt: string;
   content: string;
   date: string;
-  author: {
-    name: string;
-    avatar?: string;
-  };
+  author: Author;
   featuredImage?: Image;
   categories: Array<{
     id: string;
@@ -43,10 +41,7 @@ export function adaptPost(wpPost: any): Post {
     excerpt: cleanExcerpt(wpPost.excerpt),
     content: wpPost.content || '',
     date: wpPost.date || '',
-    author: {
-      name: wpPost.author?.node?.name || 'Anonymous',
-      avatar: wpPost.author?.node?.avatar?.url,
-    },
+    author: adaptAuthor(wpPost.author?.node),
     featuredImage: adaptImage(wpPost.featuredImage?.node),
     categories: wpPost.categories?.nodes?.map((cat: any) => ({
       id: cat.id || cat.databaseId?.toString() || '',

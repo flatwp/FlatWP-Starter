@@ -54,14 +54,14 @@ export function BlogPostCard({ post }: BlogPostCardProps) {
       <div className="flex items-center gap-4 mb-6 text-sm text-muted-foreground">
         {post.author && (
           <div className="flex items-center gap-2">
-            {post.author.avatar ? (
+            {post.author.avatar?.url ? (
               <Image
-                src={post.author.avatar}
+                src={post.author.avatar.url}
                 alt={post.author.name}
                 width={24}
                 height={24}
                 className="rounded-full"
-                unoptimized={!post.author.avatar.includes('gravatar.com')}
+                unoptimized={!post.author.avatar.url.includes('gravatar.com')}
               />
             ) : (
               <User className="w-4 h-4" />

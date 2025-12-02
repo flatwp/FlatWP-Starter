@@ -3,6 +3,7 @@
  * Provides typed, easy-to-use functions for fetching WordPress content
  */
 
+import { gql } from '@apollo/client';
 import { getClient } from './client/apollo';
 import { adaptPost, type Post } from './adapters/post';
 import { adaptPage, type Page } from './adapters/page';
@@ -594,6 +595,62 @@ export async function getAllAuthorSlugs(): Promise<string[]> {
   } catch (error) {
     console.error('Error fetching author slugs:', error);
     throw new Error('Failed to fetch author slugs');
+  }
+}
+
+/**
+ * Get author by slug with all posts
+ */
+export async function getAuthorBySlug(slug: string): Promise<any | null> {
+  const client = getClient();
+
+  try {
+    const { data } = await client.query({
+      query: gql`
+        query GetAuthorBySlug($slug: ID!) {
+          user(id: $slug, idType: SLUG) {
+            id
+            databaseId
+            name
+            firstName
+            lastName
+            nickname
+            slug
+            email
+            url
+            description
+            avatar { url }
+            posts(first: 100, where: { status: PUBLISH }) {
+              pageInfo { total }
+              nodes {
+                id
+                title
+                slug
+                excerpt
+                date
+                featuredImage { node { sourceUrl altText mediaDetails { width height } } }
+                categories { nodes { id name slug } }
+              }
+            }
+          }
+        }
+      `,
+      variables: { slug },
+      context: {
+        fetchOptions: {
+          next: { revalidate: 300 },
+        },
+      },
+    });
+
+    if (!data?.user) {
+      return null;
+    }
+
+    return data.user;
+  } catch (error) {
+    console.error(`Error fetching author "${slug}":`, error);
+    throw new Error(`Failed to fetch author: ${slug}`);
   }
 }
 

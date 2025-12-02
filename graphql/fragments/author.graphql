@@ -1,0 +1,52 @@
+# Author Fragment
+# Complete author information including custom fields
+
+fragment AuthorFields on User {
+  id
+  databaseId
+  name
+  firstName
+  lastName
+  nickname
+  slug
+  email
+  url
+  description
+  avatar {
+    url
+  }
+}
+
+# Extended author fields with post data for author archive pages
+fragment AuthorWithPosts on User {
+  ...AuthorFields
+  posts(first: 100, where: { status: PUBLISH }) {
+    pageInfo {
+      total
+    }
+    nodes {
+      id
+      title
+      slug
+      excerpt
+      date
+      featuredImage {
+        node {
+          sourceUrl
+          altText
+          mediaDetails {
+            width
+            height
+          }
+        }
+      }
+      categories {
+        nodes {
+          id
+          name
+          slug
+        }
+      }
+    }
+  }
+}

@@ -7,6 +7,7 @@ import { PostContent } from "@/components/blog/post-content";
 import { Badge } from "@/components/ui/badge";
 import { FeaturedImage } from "@/components/ui/OptimizedImage";
 import { RelatedPosts } from "@/components/blog/related-posts";
+import { AuthorCard } from "@/components/blog/author-card";
 import { getPostBySlug, getAllPostSlugs, getRelatedPosts } from "@/lib/wordpress/queries";
 import { calculateReadingTime, formatDate } from "@/lib/utils/text";
 import { unstable_cache } from 'next/cache';
@@ -96,9 +97,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
               {post.author && (
                 <div className="flex items-center gap-2">
-                  {post.author.avatar ? (
+                  {post.author.avatar?.url ? (
                     <img
-                      src={post.author.avatar}
+                      src={post.author.avatar.url}
                       alt={post.author.name}
                       className="w-10 h-10 rounded-full"
                     />
@@ -139,26 +140,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           {/* Content with intelligent HTML parsing */}
           <PostContent content={post.content} />
 
-          {/* Tags */}
-          {post.tags && post.tags.length > 0 && (
-            <div className="mt-12 pt-8 border-t border-border">
-              <h3 className="text-sm font-semibold mb-4">Tags</h3>
-              <div className="flex gap-2 flex-wrap">
-                {post.tags.map((tag) => (
-                  <Badge
-                    key={tag.id}
-                    href={`/blog/tag/${tag.slug}`}
-                    variant="outline"
-                  >
-                    #{tag.name}
-                  </Badge>
-                ))}
-              </div>
-            </div>
-          )}
+          {/* Author Card */}
+          <AuthorCard author={post.author} variant="compact" />
 
-          {/* Related Posts */}
-          <RelatedPosts posts={relatedPosts} />
+          {/* Related Posts with inline tags */}
+          <RelatedPosts posts={relatedPosts} tags={post.tags} />
         </article>
       </main>
       <Footer />

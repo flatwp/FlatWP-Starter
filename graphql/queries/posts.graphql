@@ -1,5 +1,6 @@
-# Import image fragment
+# Import fragments
 #import '../fragments/image.graphql'
+#import '../fragments/author.graphql'
 
 # Get all posts with basic information
 query GetAllPosts {
@@ -13,10 +14,7 @@ query GetAllPosts {
       date
       author {
         node {
-          name
-          avatar {
-            url
-          }
+          ...AuthorFields
         }
       }
       featuredImage {
@@ -57,10 +55,7 @@ query GetPaginatedPosts($first: Int = 10, $after: String) {
       date
       author {
         node {
-          name
-          avatar {
-            url
-          }
+          ...AuthorFields
         }
       }
       featuredImage {
