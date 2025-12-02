@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Github, Twitter, Star } from "lucide-react";
+import { Github, Star } from "lucide-react";
 
 export function Footer() {
   return (
@@ -23,22 +23,11 @@ export function Footer() {
                 with Next.js 14, TypeScript, and WordPress GraphQL.
               </p>
             </div>
-            <div className="mt-6 flex gap-4">
-              <Link
-                href="https://twitter.com/flatwp"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground transition-colors hover:text-foreground"
-                aria-label="Twitter"
-              >
-                <Twitter className="h-5 w-5" />
-              </Link>
-            </div>
           </div>
 
           <div className="grid grid-cols-2 gap-8">
             <div>
-              <h3 className="text-sm font-semibold">Product</h3>
+              <h3 className="text-sm font-semibold">Project</h3>
               <ul className="mt-4 space-y-3">
                 <li>
                   <Link
@@ -50,18 +39,10 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href="#pricing"
+                    href="/blog"
                     className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                   >
-                    Pricing
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="https://docs.flatwp.com"
-                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                  >
-                    Documentation
+                    Blog
                   </Link>
                 </li>
               </ul>
@@ -72,28 +53,20 @@ export function Footer() {
               <ul className="mt-4 space-y-3">
                 <li>
                   <Link
+                    href="https://docs.flatwp.com"
+                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    Documentation
+                  </Link>
+                </li>
+                <li>
+                  <Link
                     href="https://github.com/flatwp"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                   >
                     GitHub
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/blog"
-                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                  >
-                    Blog
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/support"
-                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                  >
-                    Support
                   </Link>
                 </li>
               </ul>
