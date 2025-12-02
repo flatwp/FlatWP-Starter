@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { BlogSearch } from "./blog-search";
-import { getPostsForSearchIndex, getAllCategories } from "@/lib/wordpress/queries";
+import { TagCloud } from "./tag-cloud";
+import { getPostsForSearchIndex, getAllCategories, getAllTags } from "@/lib/wordpress/queries";
 import { formatDate } from "@/lib/utils/text";
 
 /**
@@ -8,10 +9,11 @@ import { formatDate } from "@/lib/utils/text";
  * Fetches ALL posts data for search and categories (not just current page)
  */
 export async function BlogSidebar() {
-  // Fetch all posts for search index and all categories in parallel
-  const [searchIndex, categories] = await Promise.all([
+  // Fetch all posts for search index, categories, and tags in parallel
+  const [searchIndex, categories, tags] = await Promise.all([
     getPostsForSearchIndex(),
     getAllCategories(),
+    getAllTags(),
   ]);
 
   // Get recent posts (latest 5 from search index)
@@ -42,6 +44,9 @@ export async function BlogSidebar() {
           </div>
         </div>
       )}
+
+      {/* Tag Cloud */}
+      <TagCloud tags={tags} />
 
       {/* Recent Posts */}
       {recentPosts.length > 0 && (
