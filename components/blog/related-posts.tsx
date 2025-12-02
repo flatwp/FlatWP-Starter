@@ -1,6 +1,6 @@
-import Link from "next/link";
 import { Post } from "@/lib/wordpress/adapters/post";
 import { BlogPostCard } from "./blog-post-card";
+import { Badge } from "@/components/ui/badge";
 
 interface RelatedPostsProps {
   posts: Post[];
@@ -34,18 +34,17 @@ export function RelatedPosts({ posts, tags, title = "Related Posts" }: RelatedPo
 
         {/* Inline tags */}
         {tags && tags.length > 0 && (
-          <div className="text-muted-foreground flex items-center gap-2 flex-wrap">
-            <span>Tags:</span>
-            {tags.map((tag, index) => (
-              <span key={tag.id}>
-                <Link
-                  href={`/blog/tag/${tag.slug}`}
-                  className="hover:text-primary transition-colors"
-                >
-                  #{tag.name}
-                </Link>
-                {index < tags.length - 1 && ' '}
-              </span>
+          <div className="flex items-center gap-2 flex-wrap">
+            <span className="text-muted-foreground">Tags:</span>
+            {tags.map((tag) => (
+              <Badge
+                key={tag.id}
+                href={`/blog/tag/${tag.slug}`}
+                variant="outline"
+                size="sm"
+              >
+                #{tag.name}
+              </Badge>
             ))}
           </div>
         )}
