@@ -1,0 +1,12 @@
+# Get all categories with post counts
+query GetAllCategories {
+  categories(first: 100) {
+    nodes {
+      id
+      databaseId
+      name
+      slug
+      count
+    }
+  }
+}

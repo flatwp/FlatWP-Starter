@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0"
+	xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:wp="http://wordpress.org/export/1.2/"
+>
+<channel>
+	<title>FlatWP Demo Content</title>
+	<link>http://localhost</link>
+	<description>Demo pages for FlatWP headless WordPress starter</description>
+	<pubDate>Mon, 01 Jan 2024 12:00:00 +0000</pubDate>
+	<language>en-US</language>
+	<wp:wxr_version>1.2</wp:wxr_version>
+	<wp:base_site_url>http://localhost</wp:base_site_url>
+	<wp:base_blog_url>http://localhost</wp:base_blog_url>
+
+	<wp:author>
+		<wp:author_id>1</wp:author_id>
+		<wp:author_login><![CDATA[admin]]></wp:author_login>
+		<wp:author_email><![CDATA[admin@example.com]]></wp:author_email>
+		<wp:author_display_name><![CDATA[Admin]]></wp:author_display_name>
+		<wp:author_first_name><![CDATA[]]></wp:author_first_name>
+		<wp:author_last_name><![CDATA[]]></wp:author_last_name>
+	</wp:author>
+
+	<!-- Homepage -->
+	<item>
+		<title>Homepage</title>
+		<link>http://localhost/homepage/</link>
+		<pubDate>Mon, 01 Jan 2024 12:00:00 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<guid isPermaLink="false">http://localhost/?page_id=100</guid>
+		<description></description>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>100</wp:post_id>
+		<wp:post_date><![CDATA[2024-01-01 12:00:00]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2024-01-01 12:00:00]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2024-01-01 12:00:00]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2024-01-01 12:00:00]]></wp:post_modified_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[homepage]]></wp:post_name>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[page]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[flexible_content]]></wp:meta_key>
+			<wp:meta_value><![CDATA[a:3:{i:0;a:5:{s:13:"acf_fc_layout";s:14:"hero_centered";s:7:"heading";s:39:"Build Modern Headless WordPress Sites";s:10:"subheading";s:98:"FlatWP combines WordPress's powerful content management with Next.js performance and developer experience";s:8:"cta_text";s:12:"Get Started";s:8:"cta_link";s:8:"/signup";}i:1;a:4:{s:13:"acf_fc_layout";s:13:"features_grid";s:7:"heading";s:25:"Everything You Need";s:10:"subheading";s:52:"Powerful features for modern headless WordPress";s:8:"features";a:6:{i:0;a:3:{s:4:"icon";s:8:"⚡";s:5:"title";s:15:"Lightning Fast";s:11:"description";s:85:"Optimized for maximum performance with ISR, edge caching, and intelligent rendering";}i:1;a:3:{s:4:"icon";s:8:"🎨";s:5:"title";s:14:"Beautiful UI";s:11:"description";s:73:"Pre-built components using Shadcn UI and Tailwind CSS for rapid development";}i:2;a:3:{s:4:"icon";s:8:"🔒";s:5:"title";s:13:"Type Safe";s:11:"description";s:82:"Full TypeScript support with auto-generated GraphQL types for complete type safety";}i:3;a:3:{s:4:"icon";s:8:"🧩";s:5:"title";s:16:"Flexible Blocks";s:11:"description";s:79:"ACF Flexible Content integration for building custom page layouts in WordPress";}i:4;a:3:{s:4:"icon";s:8:"📱";s:5:"title";s:19:"Mobile First";s:11:"description";s:77:"Responsive design patterns that work beautifully across all device sizes";}i:5;a:3:{s:4:"icon";s:8:"🚀";s:5:"title";s:15:"Deploy Anywhere";s:11:"description";s:70:"Deploy to Vercel, Netlify, or any platform that supports Next.js apps";}}}i:2;a:4:{s:13:"acf_fc_layout";s:10:"cta_simple";s:7:"heading";s:24:"Ready to Get Started?";s:11:"description";s:71:"Join thousands of developers building amazing sites with FlatWP";s:8:"cta_text";s:18:"Start Building Now";s:8:"cta_link";s:8:"/signup";}}]]></wp:meta_value>
+		</wp:postmeta>
+	</item>
+
+	<!-- About Us Page -->
+	<item>
+		<title>About Us</title>
+		<link>http://localhost/about-us/</link>
+		<pubDate>Mon, 01 Jan 2024 12:00:00 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<guid isPermaLink="false">http://localhost/?page_id=101</guid>
+		<description></description>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>101</wp:post_id>
+		<wp:post_date><![CDATA[2024-01-01 12:00:00]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2024-01-01 12:00:00]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2024-01-01 12:00:00]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2024-01-01 12:00:00]]></wp:post_modified_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[about-us]]></wp:post_name>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[page]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[flexible_content]]></wp:meta_key>
+			<wp:meta_value><![CDATA[a:3:{i:0;a:6:{s:13:"acf_fc_layout";s:10:"hero_split";s:7:"heading";s:39:"Building the Future of WordPress";s:10:"subheading";s:104:"We're on a mission to make headless WordPress accessible, performant, and delightful for developers everywhere";s:8:"cta_text";s:14:"Our Story";s:8:"cta_link";s:7:"#story";s:5:"image";s:0:"";s:14:"image_position";s:5:"right";}i:1;a:6:{s:13:"acf_fc_layout";s:15:"content_section";s:7:"heading";s:18:"Our Mission";s:7:"content";s:456:"<p>FlatWP was born from the frustration of building headless WordPress sites from scratch. We've spent years working with agencies and developers, and we noticed the same patterns repeating: setting up GraphQL, implementing ISR, creating reusable components, optimizing images, managing types...</p><p>We built FlatWP to be the foundation we wish we had. A production-ready starter that handles all the complex infrastructure so you can focus on building unique experiences for your clients.</p>";s:5:"image";s:0:"";s:14:"image_position";s:4:"left";s:8:"cta_text";s:0:"";s:8:"cta_link";s:0:"";}i:2;a:2:{s:13:"acf_fc_layout";s:12:"testimonials";s:7:"heading";s:27:"What Developers Are Saying";s:12:"testimonials";a:3:{i:0;a:5:{s:5:"quote";s:130:"FlatWP cut our development time in half. The architecture is solid, the documentation is excellent, and the performance is outstanding.";s:6:"author";s:13:"Sarah Johnson";s:4:"role";s:13:"Lead Developer";s:7:"company";s:12:"Digital Wave";s:5:"image";s:0:"";}i:1;a:5:{s:5:"quote";s:140:"Finally, a headless WordPress starter that doesn't compromise. Type safety, performance, and great DX out of the box. This is what we needed.";s:6:"author";s:11:"Mike Chen";s:4:"role";s:17:"Technical Director";s:7:"company";s:11:"BuildCraft";s:5:"image";s:0:"";}i:2;a:5:{s:5:"quote";s:125:"The ACF block system is brilliant. Our content team loves the flexibility, and our dev team loves the type-safe components.";s:6:"author";s:12:"Emma Rodriguez";s:4:"role";s:13:"CTO";s:7:"company";s:12:"ContentFirst";s:5:"image";s:0:"";}}}}}]]></wp:meta_value>
+		</wp:postmeta>
+	</item>
+
+	<!-- Pricing Page -->
+	<item>
+		<title>Pricing</title>
+		<link>http://localhost/pricing/</link>
+		<pubDate>Mon, 01 Jan 2024 12:00:00 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<guid isPermaLink="false">http://localhost/?page_id=102</guid>
+		<description></description>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>102</wp:post_id>
+		<wp:post_date><![CDATA[2024-01-01 12:00:00]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2024-01-01 12:00:00]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2024-01-01 12:00:00]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2024-01-01 12:00:00]]></wp:post_modified_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[pricing]]></wp:post_name>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[page]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[flexible_content]]></wp:meta_key>
+			<wp:meta_value><![CDATA[a:3:{i:0;a:5:{s:13:"acf_fc_layout";s:14:"hero_centered";s:7:"heading";s:33:"Simple, Transparent Pricing";s:10:"subheading";s:68:"Choose the plan that's right for your team. All plans include core features.";s:8:"cta_text";s:0:"";s:8:"cta_link";s:0:"";}i:1;a:3:{s:13:"acf_fc_layout";s:7:"pricing";s:7:"heading";s:23:"Choose Your Plan";s:10:"subheading";s:48:"Start free, upgrade as you grow";s:5:"tiers";a:3:{i:0;a:8:{s:4:"name";s:7:"Starter";s:5:"price";s:2:"$0";s:6:"period";s:7:"forever";s:11:"description";s:28:"Perfect for getting started";s:8:"features";s:122:"Unlimited pages\nISR & Static Generation\nBasic ACF blocks\nCommunity support\nOpen source (MIT)\nGraphQL type generation";s:8:"cta_text";s:13:"Start Free";s:8:"cta_link";s:22:"https://github.com/flatwp";s:11:"highlighted";b:0;}i:1;a:8:{s:4:"name";s:3:"Pro";s:5:"price";s:4:"$99";s:6:"period";s:5:"month";s:11:"description";s:33:"For growing businesses";s:8:"features";s:178:"Everything in Starter\n20+ Premium ACF blocks\nWooCommerce integration\nAdvanced analytics\nPriority support\nWhite-label options\nMulti-language support\nPerformance monitoring";s:8:"cta_text";s:14:"Get Pro";s:8:"cta_link";s:8:"/signup";s:11:"highlighted";b:1;}i:2;a:8:{s:4:"name";s:10:"Enterprise";s:5:"price";s:6:"Custom";s:6:"period";s:4:"year";s:11:"description";s:30:"For agencies and large teams";s:8:"features";s:145:"Everything in Pro\nUnlimited sites\nDedicated support\nCustom development\nSLA guarantees\nWhite-glove onboarding\nArchitecture consulting";s:8:"cta_text";s:11:"Contact Us";s:8:"cta_link";s:8:"/contact";s:11:"highlighted";b:0;}}}i:2;a:5:{s:13:"acf_fc_layout";s:9:"cta_boxed";s:7:"heading";s:29:"Not sure which plan to choose?";s:11:"description";s:68:"Our team can help you find the perfect plan for your needs";s:8:"cta_text";s:17:"Schedule a Call";s:8:"cta_link";s:16:"/schedule";s:18:"secondary_cta_text";s:12:"View Docs";s:18:"secondary_cta_link";s:6:"/docs";}}]]></wp:meta_value>
+		</wp:postmeta>
+	</item>
+
+	<!-- Services Page -->
+	<item>
+		<title>Services</title>
+		<link>http://localhost/services/</link>
+		<pubDate>Mon, 01 Jan 2024 12:00:00 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<guid isPermaLink="false">http://localhost/?page_id=103</guid>
+		<description></description>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>103</wp:post_id>
+		<wp:post_date><![CDATA[2024-01-01 12:00:00]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2024-01-01 12:00:00]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2024-01-01 12:00:00]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2024-01-01 12:00:00]]></wp:post_modified_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[services]]></wp:post_name>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[page]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[flexible_content]]></wp:meta_key>
+			<wp:meta_value><![CDATA[a:4:{i:0;a:6:{s:13:"acf_fc_layout";s:10:"hero_split";s:7:"heading";s:46:"Professional Services for Your WordPress Projects";s:10:"subheading";s:94:"From migration to custom development, our team of experts is here to help you succeed";s:8:"cta_text";s:15:"Get Started";s:8:"cta_link";s:8:"/contact";s:5:"image";s:0:"";s:14:"image_position";s:4:"left";}i:1;a:4:{s:13:"acf_fc_layout";s:13:"features_grid";s:7:"heading";s:16:"What We Offer";s:10:"subheading";s:54:"Comprehensive services for headless WordPress";s:8:"features";a:4:{i:0;a:3:{s:4:"icon";s:8:"🚀";s:5:"title";s:21:"Migration Services";s:11:"description";s:95:"Seamlessly migrate your existing WordPress site to a modern headless architecture with zero downtime";}i:1;a:3:{s:4:"icon";s:8:"🎨";s:5:"title";s:20:"Custom Development";s:11:"description";s:87:"Need custom blocks or features? Our team can build exactly what you need for your project";}i:2;a:3:{s:4:"icon";s:8:"⚡";s:5:"title";s:25:"Performance Optimization";s:11:"description";s:85:"Make your site blazing fast with our performance audit and optimization services";}i:3;a:3:{s:4:"icon";s:8:"🎓";s:5:"title";s:19:"Training & Support";s:11:"description";s:80:"Get your team up to speed with personalized training and ongoing technical support";}}}i:2;a:6:{s:13:"acf_fc_layout";s:15:"content_section";s:7:"heading";s:22:"Enterprise Solutions";s:7:"content";s:489:"<p>For larger organizations, we offer comprehensive enterprise packages that include:</p><ul><li>Dedicated technical account manager</li><li>Custom SLA agreements</li><li>Priority feature development</li><li>Architecture consulting and code review</li><li>24/7 emergency support</li><li>Multi-site deployment strategies</li></ul><p>Our enterprise clients benefit from our deep expertise in WordPress, Next.js, and modern web architecture. We've helped Fortune 500 companies and fast-growing startups alike.</p>";s:5:"image";s:0:"";s:14:"image_position";s:5:"right";s:8:"cta_text";s:24:"Discuss Enterprise Needs";s:8:"cta_link";s:18:"/contact-enterprise";}i:3;a:5:{s:13:"acf_fc_layout";s:9:"cta_boxed";s:7:"heading";s:30:"Ready to Start Your Project?";s:11:"description";s:79:"Let's talk about how we can help you build something amazing with FlatWP";s:8:"cta_text";s:19:"Schedule Consultation";s:8:"cta_link";s:10:"/schedule";s:18:"secondary_cta_text";s:14:"View Case Studies";s:18:"secondary_cta_link";s:13:"/case-studies";}}]]></wp:meta_value>
+		</wp:postmeta>
+	</item>
+
+</channel>
+</rss>

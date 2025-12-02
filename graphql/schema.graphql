@@ -1,0 +1,173 @@
+# WordPress GraphQL Schema (Sample)
+# This is a minimal schema based on WPGraphQL plugin structure
+# Replace with actual schema introspection once WordPress is set up
+
+type Query {
+  posts(first: Int, after: String, where: PostsQueryInput): PostConnection
+  post(id: ID!, idType: PostIdType): Post
+  categories(first: Int, after: String): CategoryConnection
+  category(id: ID!, idType: CategoryIdType): Category
+  tags(first: Int, after: String): TagConnection
+  tag(id: ID!, idType: TagIdType): Tag
+  user(id: ID!, idType: UserNodeIdTypeEnum): User
+  users(first: Int, after: String, where: UsersConnectionWhereArgs): UserConnection
+}
+
+enum CategoryIdType {
+  ID
+  SLUG
+  DATABASE_ID
+  URI
+}
+
+enum TagIdType {
+  ID
+  SLUG
+  DATABASE_ID
+  URI
+}
+
+enum UserNodeIdTypeEnum {
+  ID
+  SLUG
+  DATABASE_ID
+  URI
+  EMAIL
+}
+
+input UsersConnectionWhereArgs {
+  hasPublishedPosts: [ContentTypeEnum]
+}
+
+enum ContentTypeEnum {
+  POST
+  PAGE
+}
+
+type CategoryConnection {
+  nodes: [Category]
+  pageInfo: PageInfo
+}
+
+type TagConnection {
+  nodes: [Tag]
+  pageInfo: PageInfo
+}
+
+type UserConnection {
+  nodes: [User]
+  pageInfo: PageInfo
+}
+
+input PostsQueryInput {
+  offsetPagination: OffsetPaginationInput
+  categoryName: String
+  tag: String
+  tagSlugIn: [String]
+  categoryIn: [String]
+  authorName: String
+}
+
+input OffsetPaginationInput {
+  size: Int
+  offset: Int
+}
+
+enum PostIdType {
+  ID
+  SLUG
+  URI
+}
+
+type PostConnection {
+  nodes: [Post]
+  pageInfo: PageInfo
+}
+
+type PageInfo {
+  hasNextPage: Boolean
+  hasPreviousPage: Boolean
+  startCursor: String
+  endCursor: String
+  offsetPagination: OffsetPaginationInfo
+}
+
+type OffsetPaginationInfo {
+  total: Int
+  hasMore: Boolean
+  hasPrevious: Boolean
+}
+
+type Post {
+  id: ID!
+  title: String
+  slug: String
+  content: String
+  excerpt: String
+  date: String
+  author: PostAuthorConnection
+  featuredImage: PostFeaturedImageConnection
+  categories: PostCategoriesConnection
+  tags: PostTagsConnection
+}
+
+type PostAuthorConnection {
+  node: User
+}
+
+type User {
+  id: ID!
+  databaseId: Int
+  name: String
+  slug: String
+  description: String
+  avatar: Avatar
+}
+
+type Avatar {
+  url: String
+}
+
+type PostFeaturedImageConnection {
+  node: MediaItem
+}
+
+type MediaItem {
+  sourceUrl: String
+  altText: String
+  mediaDetails: MediaDetails
+  blurPlaceholder: String
+  mimeType: String
+  fileSize: Int
+}
+
+type MediaDetails {
+  width: Int
+  height: Int
+}
+
+type PostCategoriesConnection {
+  nodes: [Category]
+}
+
+type Category {
+  id: ID!
+  databaseId: Int
+  name: String
+  slug: String
+  count: Int
+  description: String
+}
+
+type PostTagsConnection {
+  nodes: [Tag]
+}
+
+type Tag {
+  id: ID!
+  databaseId: Int
+  name: String
+  slug: String
+  count: Int
+  description: String
+}

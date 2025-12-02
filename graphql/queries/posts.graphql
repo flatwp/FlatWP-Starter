@@ -1,0 +1,248 @@
+# Import image fragment
+#import '../fragments/image.graphql'
+
+# Get all posts with basic information
+query GetAllPosts {
+  posts(first: 100) {
+    nodes {
+      id
+      title
+      slug
+      excerpt
+      content
+      date
+      author {
+        node {
+          name
+          avatar {
+            url
+          }
+        }
+      }
+      featuredImage {
+        node {
+          ...ImageFields
+        }
+      }
+      categories {
+        nodes {
+          id
+          databaseId
+          name
+          slug
+        }
+      }
+      tags {
+        nodes {
+          id
+          databaseId
+          name
+          slug
+        }
+      }
+      isSticky
+    }
+  }
+}
+
+# Get paginated posts with cursor-based pagination
+query GetPaginatedPosts($first: Int = 10, $after: String) {
+  posts(first: $first, after: $after) {
+    nodes {
+      id
+      title
+      slug
+      excerpt
+      content
+      date
+      author {
+        node {
+          name
+          avatar {
+            url
+          }
+        }
+      }
+      featuredImage {
+        node {
+          ...ImageFields
+        }
+      }
+      categories {
+        nodes {
+          id
+          databaseId
+          name
+          slug
+        }
+      }
+      tags {
+        nodes {
+          id
+          databaseId
+          name
+          slug
+        }
+      }
+      isSticky
+    }
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+  }
+}
+
+# Get total post count by fetching all post IDs
+# Note: This fetches up to 1000 posts. For larger sites, consider WPGraphQL Offset Pagination plugin
+query GetTotalPostCount {
+  posts(first: 1000) {
+    nodes {
+      id
+    }
+  }
+}
+
+# Get single post by slug
+query GetPostBySlug($slug: ID!) {
+  post(id: $slug, idType: SLUG) {
+    id
+    title
+    slug
+    content
+    excerpt
+    date
+    author {
+      node {
+        name
+        avatar {
+          url
+        }
+      }
+    }
+    featuredImage {
+      node {
+        ...ImageFields
+      }
+    }
+    categories {
+      nodes {
+        id
+        databaseId
+        name
+        slug
+      }
+    }
+    tags {
+      nodes {
+        id
+        databaseId
+        name
+        slug
+      }
+    }
+    isSticky
+  }
+}
+
+# Get featured (sticky) posts only
+# NOTE: WPGraphQL 2.5.3 doesn't support onlySticky/excludeSticky filters
+# Using client-side filtering in queries.ts instead
+# Uncomment when WordPress is updated to support these filters
+# query GetFeaturedPosts($first: Int = 3) {
+#   posts(first: $first, where: { onlySticky: true }) {
+#     nodes {
+#       id
+#       title
+#       slug
+#       excerpt
+#       content
+#       date
+#       author {
+#         node {
+#           name
+#           avatar {
+#             url
+#           }
+#         }
+#       }
+#       featuredImage {
+#         node {
+#           ...ImageFields
+#         }
+#       }
+#       categories {
+#         nodes {
+#           id
+#           databaseId
+#           name
+#           slug
+#         }
+#       }
+#       tags {
+#         nodes {
+#           id
+#           databaseId
+#           name
+#           slug
+#         }
+#       }
+#       isSticky
+#     }
+#   }
+# }
+
+# Get regular (non-sticky) posts only
+# NOTE: WPGraphQL 2.5.3 doesn't support onlySticky/excludeSticky filters
+# Using client-side filtering in queries.ts instead
+# Uncomment when WordPress is updated to support these filters
+# query GetRegularPosts($first: Int = 10, $after: String) {
+#   posts(first: $first, after: $after, where: { excludeSticky: true }) {
+#     nodes {
+#       id
+#       title
+#       slug
+#       excerpt
+#       content
+#       date
+#       author {
+#         node {
+#           name
+#           avatar {
+#             url
+#           }
+#         }
+#       }
+#       featuredImage {
+#         node {
+#           ...ImageFields
+#         }
+#       }
+#       categories {
+#         nodes {
+#           id
+#           databaseId
+#           name
+#           slug
+#         }
+#       }
+#       tags {
+#         nodes {
+#           id
+#           databaseId
+#           name
+#           slug
+#         }
+#       }
+#       isSticky
+#     }
+#     pageInfo {
+#       hasNextPage
+#       hasPreviousPage
+#       startCursor
+#       endCursor
+#     }
+#   }
+# }

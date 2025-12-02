@@ -1,0 +1,215 @@
+# Import image fragment
+#import '../fragments/image.graphql'
+
+# Get posts by category slug with pagination
+query GetPostsByCategory($slug: ID!, $categoryName: String!, $first: Int = 100, $after: String) {
+  category(id: $slug, idType: SLUG) {
+    id
+    databaseId
+    name
+    slug
+    description
+    count
+  }
+  posts(first: $first, after: $after, where: { categoryName: $categoryName }) {
+    nodes {
+      id
+      title
+      slug
+      excerpt
+      date
+      author {
+        node {
+          name
+          avatar {
+            url
+          }
+        }
+      }
+      featuredImage {
+        node {
+          ...ImageFields
+        }
+      }
+      categories {
+        nodes {
+          id
+          databaseId
+          name
+          slug
+        }
+      }
+      tags {
+        nodes {
+          id
+          databaseId
+          name
+          slug
+        }
+      }
+    }
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+  }
+}
+
+# Get posts by tag slug with pagination
+query GetPostsByTag($slug: ID!, $tagSlug: String!, $first: Int = 100, $after: String) {
+  tag(id: $slug, idType: SLUG) {
+    id
+    databaseId
+    name
+    slug
+    description
+    count
+  }
+  posts(first: $first, after: $after, where: { tag: $tagSlug }) {
+    nodes {
+      id
+      title
+      slug
+      excerpt
+      date
+      author {
+        node {
+          name
+          avatar {
+            url
+          }
+        }
+      }
+      featuredImage {
+        node {
+          ...ImageFields
+        }
+      }
+      categories {
+        nodes {
+          id
+          databaseId
+          name
+          slug
+        }
+      }
+      tags {
+        nodes {
+          id
+          databaseId
+          name
+          slug
+        }
+      }
+    }
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+  }
+}
+
+# Get posts by author slug with pagination
+query GetPostsByAuthor($slug: ID!, $authorName: String!, $first: Int = 100, $after: String) {
+  user(id: $slug, idType: SLUG) {
+    id
+    databaseId
+    name
+    slug
+    description
+    avatar {
+      url
+    }
+  }
+  posts(first: $first, after: $after, where: { authorName: $authorName }) {
+    nodes {
+      id
+      title
+      slug
+      excerpt
+      date
+      author {
+        node {
+          name
+          avatar {
+            url
+          }
+        }
+      }
+      featuredImage {
+        node {
+          ...ImageFields
+        }
+      }
+      categories {
+        nodes {
+          id
+          databaseId
+          name
+          slug
+        }
+      }
+      tags {
+        nodes {
+          id
+          databaseId
+          name
+          slug
+        }
+      }
+    }
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+  }
+}
+
+# Get all category slugs for static generation
+query GetAllCategorySlugs {
+  categories(first: 100) {
+    nodes {
+      slug
+      count
+    }
+  }
+}
+
+# Get all tag slugs for static generation
+query GetAllTagSlugs {
+  tags(first: 100) {
+    nodes {
+      slug
+      count
+    }
+  }
+}
+
+# Get all author slugs for static generation
+query GetAllAuthorSlugs {
+  users(first: 100, where: { hasPublishedPosts: [POST] }) {
+    nodes {
+      slug
+    }
+  }
+}
+
+# Get all tags with post counts
+query GetAllTags {
+  tags(first: 100) {
+    nodes {
+      id
+      databaseId
+      name
+      slug
+      count
+      description
+    }
+  }
+}

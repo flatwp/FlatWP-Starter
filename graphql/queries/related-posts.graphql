@@ -1,0 +1,106 @@
+# Import image fragment for featured images
+#import '../fragments/image.graphql'
+
+# Get related posts based on shared categories
+# Returns posts from the same categories as the current post
+# Note: Exclusion of current post is handled in application layer
+query GetRelatedPostsByCategory(
+  $categoryIds: [ID]
+  $first: Int = 6
+) {
+  posts(
+    where: {
+      categoryIn: $categoryIds
+    }
+    first: $first
+  ) {
+    nodes {
+      id
+      title
+      slug
+      excerpt
+      date
+      author {
+        node {
+          name
+          avatar {
+            url
+          }
+        }
+      }
+      featuredImage {
+        node {
+          ...ImageFields
+        }
+      }
+      categories {
+        nodes {
+          id
+          databaseId
+          name
+          slug
+        }
+      }
+      tags {
+        nodes {
+          id
+          databaseId
+          name
+          slug
+        }
+      }
+    }
+  }
+}
+
+# Get related posts based on shared tags
+# Fallback query when post has no categories
+# Note: Exclusion of current post is handled in application layer
+query GetRelatedPostsByTag(
+  $tagSlugs: [String!]!
+  $first: Int = 6
+) {
+  posts(
+    where: {
+      tagSlugIn: $tagSlugs
+    }
+    first: $first
+  ) {
+    nodes {
+      id
+      title
+      slug
+      excerpt
+      date
+      author {
+        node {
+          name
+          avatar {
+            url
+          }
+        }
+      }
+      featuredImage {
+        node {
+          ...ImageFields
+        }
+      }
+      categories {
+        nodes {
+          id
+          databaseId
+          name
+          slug
+        }
+      }
+      tags {
+        nodes {
+          id
+          databaseId
+          name
+          slug
+        }
+      }
+    }
+  }
+}

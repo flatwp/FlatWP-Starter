@@ -1,0 +1,8 @@
+# Get all post slugs for static generation
+query GetAllPostSlugs {
+  posts(first: 1000) {
+    nodes {
+      slug
+    }
+  }
+}

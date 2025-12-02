@@ -1,0 +1,836 @@
+{
+  "key": "group_flatwp_flexible_content",
+  "title": "Flexible Content",
+  "fields": [
+    {
+      "key": "field_flexible_content",
+      "label": "Flexible Content",
+      "name": "flexible_content",
+      "type": "flexible_content",
+      "instructions": "Add and arrange content blocks for this page",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "button_label": "Add Block",
+      "layouts": {
+        "layout_hero_centered": {
+          "key": "layout_hero_centered",
+          "name": "hero_centered",
+          "label": "Hero - Centered",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_hero_centered_heading",
+              "label": "Heading",
+              "name": "heading",
+              "type": "text",
+              "instructions": "Main heading text",
+              "required": 1,
+              "default_value": "",
+              "placeholder": "Welcome to Our Platform",
+              "maxlength": "",
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              }
+            },
+            {
+              "key": "field_hero_centered_subheading",
+              "label": "Subheading",
+              "name": "subheading",
+              "type": "textarea",
+              "instructions": "Supporting text below the heading",
+              "required": 1,
+              "default_value": "",
+              "placeholder": "Build amazing headless WordPress sites with modern tools",
+              "maxlength": "",
+              "rows": 3,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              }
+            },
+            {
+              "key": "field_hero_centered_cta_text",
+              "label": "CTA Text",
+              "name": "cta_text",
+              "type": "text",
+              "instructions": "Call-to-action button text",
+              "required": 0,
+              "default_value": "",
+              "placeholder": "Get Started",
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              }
+            },
+            {
+              "key": "field_hero_centered_cta_link",
+              "label": "CTA Link",
+              "name": "cta_link",
+              "type": "text",
+              "instructions": "Button URL (relative or absolute)",
+              "required": 0,
+              "default_value": "",
+              "placeholder": "/contact",
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              }
+            }
+          ],
+          "min": "",
+          "max": ""
+        },
+        "layout_hero_split": {
+          "key": "layout_hero_split",
+          "name": "hero_split",
+          "label": "Hero - Split (Image + Text)",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_hero_split_heading",
+              "label": "Heading",
+              "name": "heading",
+              "type": "text",
+              "instructions": "Main heading text",
+              "required": 1,
+              "default_value": "",
+              "placeholder": "Transform Your WordPress Experience",
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              }
+            },
+            {
+              "key": "field_hero_split_subheading",
+              "label": "Subheading",
+              "name": "subheading",
+              "type": "textarea",
+              "instructions": "Supporting text",
+              "required": 1,
+              "default_value": "",
+              "rows": 3,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              }
+            },
+            {
+              "key": "field_hero_split_cta_text",
+              "label": "CTA Text",
+              "name": "cta_text",
+              "type": "text",
+              "required": 0,
+              "placeholder": "Learn More",
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              }
+            },
+            {
+              "key": "field_hero_split_cta_link",
+              "label": "CTA Link",
+              "name": "cta_link",
+              "type": "text",
+              "required": 0,
+              "placeholder": "/about",
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              }
+            },
+            {
+              "key": "field_hero_split_image",
+              "label": "Hero Image",
+              "name": "image",
+              "type": "image",
+              "instructions": "Upload hero image (recommended: 1200x800px)",
+              "required": 1,
+              "return_format": "array",
+              "preview_size": "medium",
+              "library": "all",
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              }
+            },
+            {
+              "key": "field_hero_split_image_position",
+              "label": "Image Position",
+              "name": "image_position",
+              "type": "select",
+              "instructions": "Choose image placement",
+              "required": 1,
+              "choices": {
+                "left": "Left",
+                "right": "Right"
+              },
+              "default_value": "right",
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              }
+            }
+          ],
+          "min": "",
+          "max": ""
+        },
+        "layout_features_grid": {
+          "key": "layout_features_grid",
+          "name": "features_grid",
+          "label": "Features Grid",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_features_heading",
+              "label": "Heading",
+              "name": "heading",
+              "type": "text",
+              "instructions": "Section heading",
+              "required": 1,
+              "placeholder": "Key Features",
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              }
+            },
+            {
+              "key": "field_features_subheading",
+              "label": "Subheading",
+              "name": "subheading",
+              "type": "text",
+              "instructions": "Optional section subheading",
+              "required": 0,
+              "placeholder": "Everything you need to build amazing sites",
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              }
+            },
+            {
+              "key": "field_features_items",
+              "label": "Features",
+              "name": "features",
+              "type": "repeater",
+              "instructions": "Add feature items (3-6 recommended)",
+              "required": 1,
+              "layout": "block",
+              "button_label": "Add Feature",
+              "sub_fields": [
+                {
+                  "key": "field_feature_icon",
+                  "label": "Icon",
+                  "name": "icon",
+                  "type": "text",
+                  "instructions": "Emoji or icon character",
+                  "required": 1,
+                  "placeholder": "🚀",
+                  "wrapper": {
+                    "width": "20",
+                    "class": "",
+                    "id": ""
+                  }
+                },
+                {
+                  "key": "field_feature_title",
+                  "label": "Title",
+                  "name": "title",
+                  "type": "text",
+                  "instructions": "Feature title",
+                  "required": 1,
+                  "placeholder": "Lightning Fast",
+                  "wrapper": {
+                    "width": "80",
+                    "class": "",
+                    "id": ""
+                  }
+                },
+                {
+                  "key": "field_feature_description",
+                  "label": "Description",
+                  "name": "description",
+                  "type": "textarea",
+                  "instructions": "Feature description",
+                  "required": 1,
+                  "rows": 2,
+                  "placeholder": "Optimized for maximum performance with ISR and edge caching",
+                  "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                  }
+                }
+              ],
+              "min": 3,
+              "max": 8
+            }
+          ],
+          "min": "",
+          "max": ""
+        },
+        "layout_pricing": {
+          "key": "layout_pricing",
+          "name": "pricing",
+          "label": "Pricing",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_pricing_heading",
+              "label": "Heading",
+              "name": "heading",
+              "type": "text",
+              "instructions": "Section heading",
+              "required": 1,
+              "placeholder": "Simple, Transparent Pricing",
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              }
+            },
+            {
+              "key": "field_pricing_subheading",
+              "label": "Subheading",
+              "name": "subheading",
+              "type": "text",
+              "instructions": "Optional section subheading",
+              "required": 0,
+              "placeholder": "Choose the plan that's right for you",
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              }
+            },
+            {
+              "key": "field_pricing_tiers",
+              "label": "Pricing Tiers",
+              "name": "tiers",
+              "type": "repeater",
+              "instructions": "Add pricing tiers (2-3 recommended)",
+              "required": 1,
+              "layout": "block",
+              "button_label": "Add Tier",
+              "sub_fields": [
+                {
+                  "key": "field_tier_name",
+                  "label": "Name",
+                  "name": "name",
+                  "type": "text",
+                  "required": 1,
+                  "placeholder": "Professional",
+                  "wrapper": {
+                    "width": "33",
+                    "class": "",
+                    "id": ""
+                  }
+                },
+                {
+                  "key": "field_tier_price",
+                  "label": "Price",
+                  "name": "price",
+                  "type": "text",
+                  "required": 1,
+                  "placeholder": "$29",
+                  "wrapper": {
+                    "width": "33",
+                    "class": "",
+                    "id": ""
+                  }
+                },
+                {
+                  "key": "field_tier_period",
+                  "label": "Period",
+                  "name": "period",
+                  "type": "text",
+                  "required": 1,
+                  "placeholder": "month",
+                  "wrapper": {
+                    "width": "34",
+                    "class": "",
+                    "id": ""
+                  }
+                },
+                {
+                  "key": "field_tier_description",
+                  "label": "Description",
+                  "name": "description",
+                  "type": "text",
+                  "required": 0,
+                  "placeholder": "Perfect for growing businesses",
+                  "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                  }
+                },
+                {
+                  "key": "field_tier_features",
+                  "label": "Features",
+                  "name": "features",
+                  "type": "textarea",
+                  "instructions": "One feature per line",
+                  "required": 1,
+                  "rows": 5,
+                  "placeholder": "Unlimited pages\n24/7 support\nAdvanced analytics\nPriority updates",
+                  "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                  }
+                },
+                {
+                  "key": "field_tier_cta_text",
+                  "label": "CTA Text",
+                  "name": "cta_text",
+                  "type": "text",
+                  "required": 1,
+                  "placeholder": "Get Started",
+                  "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                  }
+                },
+                {
+                  "key": "field_tier_cta_link",
+                  "label": "CTA Link",
+                  "name": "cta_link",
+                  "type": "text",
+                  "required": 1,
+                  "placeholder": "/signup",
+                  "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                  }
+                },
+                {
+                  "key": "field_tier_highlighted",
+                  "label": "Highlighted",
+                  "name": "highlighted",
+                  "type": "true_false",
+                  "instructions": "Mark as popular/recommended tier",
+                  "required": 0,
+                  "default_value": 0,
+                  "ui": 1,
+                  "ui_on_text": "Popular",
+                  "ui_off_text": "Normal",
+                  "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                  }
+                }
+              ],
+              "min": 2,
+              "max": 4
+            }
+          ],
+          "min": "",
+          "max": ""
+        },
+        "layout_cta_simple": {
+          "key": "layout_cta_simple",
+          "name": "cta_simple",
+          "label": "CTA - Simple",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_cta_simple_heading",
+              "label": "Heading",
+              "name": "heading",
+              "type": "text",
+              "required": 1,
+              "placeholder": "Ready to get started?",
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              }
+            },
+            {
+              "key": "field_cta_simple_description",
+              "label": "Description",
+              "name": "description",
+              "type": "textarea",
+              "required": 0,
+              "rows": 2,
+              "placeholder": "Join thousands of developers building with FlatWP",
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              }
+            },
+            {
+              "key": "field_cta_simple_cta_text",
+              "label": "CTA Text",
+              "name": "cta_text",
+              "type": "text",
+              "required": 1,
+              "placeholder": "Get Started Free",
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              }
+            },
+            {
+              "key": "field_cta_simple_cta_link",
+              "label": "CTA Link",
+              "name": "cta_link",
+              "type": "text",
+              "required": 1,
+              "placeholder": "/signup",
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              }
+            }
+          ],
+          "min": "",
+          "max": ""
+        },
+        "layout_cta_boxed": {
+          "key": "layout_cta_boxed",
+          "name": "cta_boxed",
+          "label": "CTA - Boxed",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_cta_boxed_heading",
+              "label": "Heading",
+              "name": "heading",
+              "type": "text",
+              "required": 1,
+              "placeholder": "Start building today",
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              }
+            },
+            {
+              "key": "field_cta_boxed_description",
+              "label": "Description",
+              "name": "description",
+              "type": "textarea",
+              "required": 0,
+              "rows": 2,
+              "placeholder": "Everything you need to launch your headless WordPress site",
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              }
+            },
+            {
+              "key": "field_cta_boxed_cta_text",
+              "label": "Primary CTA Text",
+              "name": "cta_text",
+              "type": "text",
+              "required": 1,
+              "placeholder": "Get Started",
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              }
+            },
+            {
+              "key": "field_cta_boxed_cta_link",
+              "label": "Primary CTA Link",
+              "name": "cta_link",
+              "type": "text",
+              "required": 1,
+              "placeholder": "/signup",
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              }
+            },
+            {
+              "key": "field_cta_boxed_secondary_cta_text",
+              "label": "Secondary CTA Text",
+              "name": "secondary_cta_text",
+              "type": "text",
+              "required": 0,
+              "placeholder": "Learn More",
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              }
+            },
+            {
+              "key": "field_cta_boxed_secondary_cta_link",
+              "label": "Secondary CTA Link",
+              "name": "secondary_cta_link",
+              "type": "text",
+              "required": 0,
+              "placeholder": "/docs",
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              }
+            }
+          ],
+          "min": "",
+          "max": ""
+        },
+        "layout_testimonials": {
+          "key": "layout_testimonials",
+          "name": "testimonials",
+          "label": "Testimonials",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_testimonials_heading",
+              "label": "Heading",
+              "name": "heading",
+              "type": "text",
+              "required": 1,
+              "placeholder": "What our customers say",
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              }
+            },
+            {
+              "key": "field_testimonials_items",
+              "label": "Testimonials",
+              "name": "testimonials",
+              "type": "repeater",
+              "instructions": "Add testimonial items (3-6 recommended)",
+              "required": 1,
+              "layout": "block",
+              "button_label": "Add Testimonial",
+              "sub_fields": [
+                {
+                  "key": "field_testimonial_quote",
+                  "label": "Quote",
+                  "name": "quote",
+                  "type": "textarea",
+                  "required": 1,
+                  "rows": 3,
+                  "placeholder": "FlatWP transformed how we build WordPress sites. The performance gains are incredible!",
+                  "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                  }
+                },
+                {
+                  "key": "field_testimonial_author",
+                  "label": "Author",
+                  "name": "author",
+                  "type": "text",
+                  "required": 1,
+                  "placeholder": "Sarah Johnson",
+                  "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                  }
+                },
+                {
+                  "key": "field_testimonial_role",
+                  "label": "Role",
+                  "name": "role",
+                  "type": "text",
+                  "required": 0,
+                  "placeholder": "CTO",
+                  "wrapper": {
+                    "width": "25",
+                    "class": "",
+                    "id": ""
+                  }
+                },
+                {
+                  "key": "field_testimonial_company",
+                  "label": "Company",
+                  "name": "company",
+                  "type": "text",
+                  "required": 0,
+                  "placeholder": "TechCorp",
+                  "wrapper": {
+                    "width": "25",
+                    "class": "",
+                    "id": ""
+                  }
+                },
+                {
+                  "key": "field_testimonial_image",
+                  "label": "Author Photo",
+                  "name": "image",
+                  "type": "image",
+                  "instructions": "Optional author photo (recommended: 200x200px)",
+                  "required": 0,
+                  "return_format": "array",
+                  "preview_size": "thumbnail",
+                  "library": "all",
+                  "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                  }
+                }
+              ],
+              "min": 3,
+              "max": 6
+            }
+          ],
+          "min": "",
+          "max": ""
+        },
+        "layout_content_section": {
+          "key": "layout_content_section",
+          "name": "content_section",
+          "label": "Content Section",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_content_heading",
+              "label": "Heading",
+              "name": "heading",
+              "type": "text",
+              "required": 1,
+              "placeholder": "About Our Platform",
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              }
+            },
+            {
+              "key": "field_content_content",
+              "label": "Content",
+              "name": "content",
+              "type": "wysiwyg",
+              "instructions": "Main content area with rich text formatting",
+              "required": 1,
+              "default_value": "",
+              "tabs": "all",
+              "toolbar": "full",
+              "media_upload": 1,
+              "delay": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              }
+            },
+            {
+              "key": "field_content_image",
+              "label": "Image",
+              "name": "image",
+              "type": "image",
+              "instructions": "Optional section image",
+              "required": 0,
+              "return_format": "array",
+              "preview_size": "medium",
+              "library": "all",
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              }
+            },
+            {
+              "key": "field_content_image_position",
+              "label": "Image Position",
+              "name": "image_position",
+              "type": "select",
+              "instructions": "Choose image placement",
+              "required": 0,
+              "choices": {
+                "left": "Left",
+                "right": "Right",
+                "top": "Top",
+                "bottom": "Bottom"
+              },
+              "default_value": "right",
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              }
+            },
+            {
+              "key": "field_content_cta_text",
+              "label": "CTA Text",
+              "name": "cta_text",
+              "type": "text",
+              "instructions": "Optional call-to-action button",
+              "required": 0,
+              "placeholder": "Learn More",
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              }
+            },
+            {
+              "key": "field_content_cta_link",
+              "label": "CTA Link",
+              "name": "cta_link",
+              "type": "text",
+              "required": 0,
+              "placeholder": "/about",
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              }
+            }
+          ],
+          "min": "",
+          "max": ""
+        }
+      },
+      "min": "",
+      "max": ""
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "page"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": [
+    "the_content"
+  ],
+  "active": true,
+  "description": "Flexible content blocks for page builder"
+}

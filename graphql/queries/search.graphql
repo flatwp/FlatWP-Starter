@@ -1,0 +1,28 @@
+# Get posts for search index with full metadata
+query GetSearchIndex {
+  posts(first: 1000) {
+    nodes {
+      id
+      title
+      slug
+      excerpt
+      date
+      categories {
+        nodes {
+          id
+          databaseId
+          name
+          slug
+        }
+      }
+      tags {
+        nodes {
+          id
+          databaseId
+          name
+          slug
+        }
+      }
+    }
+  }
+}

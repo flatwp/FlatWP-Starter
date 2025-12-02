@@ -1,0 +1,21 @@
+{
+  "name": "FlatWP",
+  "short_name": "FlatWP",
+  "description": "Modern Headless WordPress Starter Kit",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#ff6600",
+  "icons": [
+    {
+      "src": "/logos/orange/orange-ico.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/logos/orange/orange-ico.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

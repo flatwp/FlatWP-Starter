@@ -1,0 +1,12 @@
+# Image Fragment
+# Reusable fragment for standard WPGraphQL MediaItem fields
+# Note: blurPlaceholder, mimeType, fileSize require additional plugins
+
+fragment ImageFields on MediaItem {
+  sourceUrl
+  altText
+  mediaDetails {
+    width
+    height
+  }
+}

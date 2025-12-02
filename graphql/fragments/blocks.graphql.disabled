@@ -1,0 +1,107 @@
+# Import image fragment for block images
+#import './image.graphql'
+
+# Fragment for Hero Centered block
+fragment HeroCenteredFields on Page_Flexiblecontent_FlexibleContent_HeroCentered {
+  fieldGroupName
+  heading
+  subheading
+  ctaText
+  ctaLink
+}
+
+# Fragment for Hero Split block
+fragment HeroSplitFields on Page_Flexiblecontent_FlexibleContent_HeroSplit {
+  fieldGroupName
+  heading
+  subheading
+  ctaText
+  ctaLink
+  image {
+    node {
+      ...ImageFields
+    }
+  }
+  imagePosition
+}
+
+# Fragment for Features Grid block
+fragment FeaturesGridFields on Page_Flexiblecontent_FlexibleContent_FeaturesGrid {
+  fieldGroupName
+  heading
+  subheading
+  features {
+    icon
+    title
+    description
+  }
+}
+
+# Fragment for Pricing block
+fragment PricingFields on Page_Flexiblecontent_FlexibleContent_Pricing {
+  fieldGroupName
+  heading
+  subheading
+  tiers {
+    name
+    price
+    period
+    description
+    features
+    ctaText
+    ctaLink
+    highlighted
+  }
+}
+
+# Fragment for CTA Simple block
+fragment CtaSimpleFields on Page_Flexiblecontent_FlexibleContent_CtaSimple {
+  fieldGroupName
+  heading
+  description
+  ctaText
+  ctaLink
+}
+
+# Fragment for CTA Boxed block
+fragment CtaBoxedFields on Page_Flexiblecontent_FlexibleContent_CtaBoxed {
+  fieldGroupName
+  heading
+  description
+  ctaText
+  ctaLink
+  secondaryCtaText
+  secondaryCtaLink
+}
+
+# Fragment for Testimonials block
+fragment TestimonialsFields on Page_Flexiblecontent_FlexibleContent_Testimonials {
+  fieldGroupName
+  heading
+  testimonials {
+    quote
+    author
+    role
+    company
+    image {
+      node {
+        ...ImageFields
+      }
+    }
+  }
+}
+
+# Fragment for Content Section block
+fragment ContentSectionFields on Page_Flexiblecontent_FlexibleContent_ContentSection {
+  fieldGroupName
+  heading
+  content
+  image {
+    node {
+      ...ImageFields
+    }
+  }
+  imagePosition
+  ctaText
+  ctaLink
+}

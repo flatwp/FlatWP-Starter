@@ -1,0 +1,80 @@
+# Import block fragments
+#import '../fragments/blocks.graphql'
+#import '../fragments/image.graphql'
+
+# Get all page slugs for static generation
+query GetAllPageSlugs {
+  pages(first: 100, where: { status: PUBLISH }) {
+    nodes {
+      slug
+    }
+  }
+}
+
+# Get single page by slug with flexible content blocks
+query GetPageBySlug($slug: ID!) {
+  page(id: $slug, idType: URI) {
+    id
+    title
+    slug
+    content
+    date
+    modified
+    featuredImage {
+      node {
+        ...ImageFields
+      }
+    }
+    seo {
+      title
+      metaDesc
+    }
+    revalidateTime
+
+    # ACF Flexible Content field
+    flexibleContent {
+      ...HeroCenteredFields
+      ...HeroSplitFields
+      ...FeaturesGridFields
+      ...PricingFields
+      ...CtaSimpleFields
+      ...CtaBoxedFields
+      ...TestimonialsFields
+      ...ContentSectionFields
+    }
+  }
+}
+
+# Get page by ID (for preview mode)
+query GetPageById($id: ID!) {
+  page(id: $id, idType: DATABASE_ID) {
+    id
+    title
+    slug
+    content
+    date
+    modified
+    featuredImage {
+      node {
+        ...ImageFields
+      }
+    }
+    seo {
+      title
+      metaDesc
+    }
+    revalidateTime
+
+    # ACF Flexible Content field
+    flexibleContent {
+      ...HeroCenteredFields
+      ...HeroSplitFields
+      ...FeaturesGridFields
+      ...PricingFields
+      ...CtaSimpleFields
+      ...CtaBoxedFields
+      ...TestimonialsFields
+      ...ContentSectionFields
+    }
+  }
+}
