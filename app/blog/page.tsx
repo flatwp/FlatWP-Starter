@@ -27,7 +27,7 @@ export default async function BlogPage() {
   return (
     <div className="relative min-h-screen">
       <Header />
-      <main className="container mx-auto px-6 py-12">
+      <main className="container mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8">
         {/* Page Header */}
         <div className="mb-12">
           <h1 className="text-5xl font-bold mb-4">Blog</h1>
