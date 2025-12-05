@@ -1,0 +1,118 @@
+# Page Queries
+# Fetch WordPress Pages with ACF Flexible Content blocks and FlatWP settings
+
+query GetPageBySlug($slug: ID!) {
+  page(id: $slug, idType: URI) {
+    id
+    databaseId
+    title
+    slug
+    content
+    date
+    modified
+    uri
+    featuredImage {
+      node {
+        ...ImageFields
+      }
+    }
+    seo {
+      meta {
+        title
+        description
+        canonical
+        robots
+      }
+      og {
+        title
+        description
+        image
+      }
+      twitter {
+        title
+        description
+        image
+      }
+      schema
+    }
+    flatwpSettings {
+      hideTitle
+      containerWidth
+      hideHeader
+      hideFooter
+      customCssClass
+      showSidebar
+    }
+    revalidateTime
+    # ACF Flexible Content fields will be added automatically by WPGraphQL for ACF
+    # when the field group is created in WordPress:
+    # flexibleContent {
+    #   ...flexible content block fields
+    # }
+    # sidebarBlocks {
+    #   ...sidebar block fields
+    # }
+  }
+}
+
+query GetPageById($id: ID!) {
+  page(id: $id, idType: DATABASE_ID) {
+    id
+    databaseId
+    title
+    slug
+    content
+    date
+    modified
+    uri
+    featuredImage {
+      node {
+        ...ImageFields
+      }
+    }
+    seo {
+      meta {
+        title
+        description
+        canonical
+        robots
+      }
+      og {
+        title
+        description
+        image
+      }
+      twitter {
+        title
+        description
+        image
+      }
+      schema
+    }
+    flatwpSettings {
+      hideTitle
+      containerWidth
+      hideHeader
+      hideFooter
+      customCssClass
+      showSidebar
+    }
+    revalidateTime
+    # ACF Flexible Content fields will be added automatically by WPGraphQL for ACF
+    # flexibleContent {
+    #   ...flexible content block fields
+    # }
+    # sidebarBlocks {
+    #   ...sidebar block fields
+    # }
+  }
+}
+
+query GetAllPageSlugs {
+  pages(first: 1000, where: { status: PUBLISH }) {
+    nodes {
+      slug
+      modified
+    }
+  }
+}
