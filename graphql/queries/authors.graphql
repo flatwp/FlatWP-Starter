@@ -9,8 +9,9 @@ query GetAuthorBySlug($slug: ID!) {
 }
 
 # Get all author slugs for static generation
+# Only fetch authors with published posts
 query GetAllAuthorSlugs {
-  users(first: 100) {
+  users(first: 100, where: { hasPublishedPosts: [POST] }) {
     nodes {
       slug
     }
