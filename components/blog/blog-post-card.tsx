@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Calendar, User } from "lucide-react";
+import { ArrowRight, Calendar, User, Clock } from "lucide-react";
 import { Post } from "@/lib/wordpress/adapters/post";
 import { Badge } from "@/components/ui/badge";
 import { calculateReadingTime, formatDate } from "@/lib/utils/text";
@@ -77,7 +77,10 @@ export function BlogPostCard({ post }: BlogPostCardProps) {
           </time>
         </div>
         <span>•</span>
-        <span>{readTime} min read</span>
+        <div className="flex items-center gap-2">
+          <Clock className="w-4 h-4" />
+          <span>{readTime} min read</span>
+        </div>
       </div>
 
       {/* Tags section (optional, at bottom) */}

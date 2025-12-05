@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Calendar, User, ArrowRight, Star } from "lucide-react";
+import { Calendar, User, ArrowRight, Star, Clock } from "lucide-react";
 import { Post } from "@/lib/wordpress/adapters/post";
 import { Badge } from "@/components/ui/badge";
 import { calculateReadingTime, formatDate } from "@/lib/utils/text";
@@ -24,7 +24,7 @@ export function FeaturedPostCard({ post, priority = false }: FeaturedPostCardPro
         {/* Featured Image Section */}
         <Link
           href={`/blog/${post.slug}`}
-          className="relative aspect-[16/10] lg:aspect-auto bg-muted overflow-hidden"
+          className="relative aspect-video lg:aspect-auto bg-muted overflow-hidden"
         >
           {post.featuredImage ? (
             <>
@@ -116,7 +116,10 @@ export function FeaturedPostCard({ post, priority = false }: FeaturedPostCardPro
               </time>
             </div>
             <span className="text-border">•</span>
-            <span>{readTime} min read</span>
+            <div className="flex items-center gap-2">
+              <Clock className="w-4 h-4" />
+              <span>{readTime} min read</span>
+            </div>
           </div>
 
           {/* Read More CTA */}
