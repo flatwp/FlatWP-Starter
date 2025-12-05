@@ -1,0 +1,32 @@
+# FlatWP Starter - Git Attributes
+# Excludes development/internal files from releases
+
+# Development documentation (keep README.md and CHANGELOG.md only)
+lib/**/*.md export-ignore
+wordpress-setup/**/*.md export-ignore
+docs/**/*.md export-ignore
+.devnotes/**/*.md export-ignore
+
+# Development directories
+.devnotes/ export-ignore
+docs/ export-ignore
+tests/ export-ignore
+__tests__/ export-ignore
+
+# Development configuration files
+.env.example export-ignore
+.env.local export-ignore
+.vscode/ export-ignore
+.idea/ export-ignore
+*.config.ts export-ignore
+tsconfig.json export-ignore
+codegen.ts export-ignore
+
+# Git files
+.gitignore export-ignore
+.gitattributes export-ignore
+
+# Build artifacts (should be in .gitignore but extra safety)
+.next/ export-ignore
+.turbo/ export-ignore
+node_modules/ export-ignore
