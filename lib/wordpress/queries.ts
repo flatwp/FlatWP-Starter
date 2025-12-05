@@ -24,6 +24,9 @@ import {
   GetAllTagsDocument,
   GetRelatedPostsByCategoryDocument,
   GetRelatedPostsByTagDocument,
+  GetAllPageSlugsDocument,
+  GetPageBySlugDocument,
+  GetPageByIdDocument,
   // GetFeaturedPostsDocument, // Not available yet - using client-side filtering fallback
   // GetRegularPostsDocument,  // Not available yet - using client-side filtering fallback
 } from './__generated__/graphql';
@@ -899,8 +902,6 @@ export async function getRegularPosts(
  * @returns Array of page slugs
  */
 export async function getAllPageSlugs(): Promise<string[]> {
-  // TODO: Uncomment when WordPress ACF is configured and GetAllPageSlugsDocument is generated
-  /*
   const client = getClient();
 
   try {
@@ -925,11 +926,6 @@ export async function getAllPageSlugs(): Promise<string[]> {
     console.error('Error fetching page slugs:', error);
     throw new Error('Failed to fetch page slugs');
   }
-  */
-
-  // Placeholder until WordPress ACF is configured
-  console.warn('getAllPageSlugs: WordPress ACF not yet configured. Returning empty array.');
-  return [];
 }
 
 /**
@@ -944,8 +940,6 @@ export async function getPageBySlug(
   slug: string,
   revalidate: number = 3600
 ): Promise<Page | null> {
-  // TODO: Uncomment when WordPress ACF is configured and GetPageBySlugDocument is generated
-  /*
   const client = getClient();
 
   try {
@@ -968,11 +962,6 @@ export async function getPageBySlug(
     console.error(`Error fetching page with slug "${slug}":`, error);
     throw new Error(`Failed to fetch page: ${slug}`);
   }
-  */
-
-  // Placeholder until WordPress ACF is configured
-  console.warn(`getPageBySlug("${slug}"): WordPress ACF not yet configured. Returning null.`);
-  return null;
 }
 
 /**
@@ -982,8 +971,6 @@ export async function getPageBySlug(
  * @returns Page object or null if not found
  */
 export async function getPageById(id: string): Promise<Page | null> {
-  // TODO: Uncomment when WordPress ACF is configured and GetPageByIdDocument is generated
-  /*
   const client = getClient();
 
   try {
@@ -1006,9 +993,4 @@ export async function getPageById(id: string): Promise<Page | null> {
     console.error(`Error fetching page with ID "${id}":`, error);
     throw new Error(`Failed to fetch page: ${id}`);
   }
-  */
-
-  // Placeholder until WordPress ACF is configured
-  console.warn(`getPageById("${id}"): WordPress ACF not yet configured. Returning null.`);
-  return null;
 }

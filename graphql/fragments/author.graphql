@@ -22,7 +22,8 @@ fragment AuthorWithPosts on User {
   ...AuthorFields
   posts(first: 100, where: { status: PUBLISH }) {
     pageInfo {
-      total
+      hasNextPage
+      hasPreviousPage
     }
     nodes {
       id

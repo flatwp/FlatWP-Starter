@@ -25,7 +25,7 @@
     "start": "next start",
     "lint": "next lint",
     "type-check": "tsc --noEmit",
-    "graphql:codegen": "export $(cat .env.local | xargs) && graphql-codegen --config codegen.ts",
+    "graphql:codegen": "export $(grep -v '^#' .env.local | grep -v '^$' | xargs) && graphql-codegen --config codegen.ts",
     "clean": "rm -rf .next node_modules .turbo"
   },
   "dependencies": {
