@@ -1,0 +1,161 @@
+{
+  "key": "group_flatwp_page_flexible_content",
+  "title": "Page Content Blocks",
+  "fields": [
+    {
+      "key": "field_page_flexible_content",
+      "label": "Page Content",
+      "name": "flexible_content",
+      "type": "flexible_content",
+      "instructions": "Build your page using flexible content blocks. These blocks will be rendered in your Next.js frontend.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "layouts": {
+        "hero_centered": {
+          "key": "layout_hero_centered",
+          "name": "hero_centered",
+          "label": "Hero - Centered",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_hero_centered_heading",
+              "label": "Heading",
+              "name": "heading",
+              "type": "text",
+              "required": 1,
+              "default_value": "",
+              "placeholder": "Enter heading..."
+            },
+            {
+              "key": "field_hero_centered_subheading",
+              "label": "Subheading",
+              "name": "subheading",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "placeholder": "Enter subheading..."
+            },
+            {
+              "key": "field_hero_centered_cta_text",
+              "label": "CTA Button Text",
+              "name": "cta_text",
+              "type": "text",
+              "required": 0,
+              "placeholder": "Get Started"
+            },
+            {
+              "key": "field_hero_centered_cta_url",
+              "label": "CTA Button URL",
+              "name": "cta_url",
+              "type": "url",
+              "required": 0,
+              "placeholder": "https://..."
+            }
+          ],
+          "min": "",
+          "max": ""
+        },
+        "content_section": {
+          "key": "layout_content_section",
+          "name": "content_section",
+          "label": "Content Section",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_content_section_title",
+              "label": "Title",
+              "name": "title",
+              "type": "text",
+              "required": 0,
+              "placeholder": "Section title..."
+            },
+            {
+              "key": "field_content_section_content",
+              "label": "Content",
+              "name": "content",
+              "type": "wysiwyg",
+              "required": 1,
+              "tabs": "all",
+              "toolbar": "full",
+              "media_upload": 1
+            }
+          ],
+          "min": "",
+          "max": ""
+        },
+        "cta_simple": {
+          "key": "layout_cta_simple",
+          "name": "cta_simple",
+          "label": "CTA - Simple",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_cta_simple_heading",
+              "label": "Heading",
+              "name": "heading",
+              "type": "text",
+              "required": 1,
+              "placeholder": "Call to action heading..."
+            },
+            {
+              "key": "field_cta_simple_text",
+              "label": "Text",
+              "name": "text",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "placeholder": "Supporting text..."
+            },
+            {
+              "key": "field_cta_simple_button_text",
+              "label": "Button Text",
+              "name": "button_text",
+              "type": "text",
+              "required": 1,
+              "default_value": "Get Started",
+              "placeholder": "Button text..."
+            },
+            {
+              "key": "field_cta_simple_button_url",
+              "label": "Button URL",
+              "name": "button_url",
+              "type": "url",
+              "required": 1,
+              "placeholder": "https://..."
+            }
+          ],
+          "min": "",
+          "max": ""
+        }
+      },
+      "button_label": "Add Block",
+      "min": "",
+      "max": ""
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "page"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": [
+    "the_content"
+  ],
+  "active": true,
+  "description": "",
+  "show_in_rest": 1
+}
