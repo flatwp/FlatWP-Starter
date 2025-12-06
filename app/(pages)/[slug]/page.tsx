@@ -3,17 +3,11 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { BlockRenderer } from "@/components/blocks/block-renderer";
 import { Sidebar } from "@/components/Sidebar";
-import { getPageBySlug, getAllPageSlugs } from "@/lib/wordpress/queries";
+import { getPageBySlug } from "@/lib/wordpress/queries";
 import { unstable_cache } from 'next/cache';
 
-// Dynamic revalidate is now controlled by WordPress settings per page
-// Each page can have its own revalidate time set in WordPress admin
-
-// Generate static params for all pages at build time
-export async function generateStaticParams() {
-  const slugs = await getAllPageSlugs();
-  return slugs.map((slug) => ({ slug }));
-}
+// Dynamic params - allow non-prerendered paths
+export const dynamicParams = true;
 
 interface PageProps {
   params: Promise<{

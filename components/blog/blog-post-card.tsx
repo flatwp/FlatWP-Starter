@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Calendar, User, Clock } from "lucide-react";
+import { Calendar, User, Clock } from "lucide-react";
 import { Post } from "@/lib/wordpress/adapters/post";
 import { Badge } from "@/components/ui/badge";
 import { calculateReadingTime, formatDate } from "@/lib/utils/text";

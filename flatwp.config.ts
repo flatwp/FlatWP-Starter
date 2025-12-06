@@ -103,7 +103,6 @@ export default defineConfig({
     analytics: {
       vercel: process.env.NEXT_PUBLIC_VERCEL_ANALYTICS === 'true',
       google: process.env.NEXT_PUBLIC_GA_ID,
-      sentry: process.env.NEXT_PUBLIC_SENTRY_DSN,
     },
   },
 

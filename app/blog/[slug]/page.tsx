@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft, Calendar, Clock, User } from "lucide-react";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
@@ -8,17 +9,13 @@ import { Badge } from "@/components/ui/badge";
 import { FeaturedImage } from "@/components/ui/OptimizedImage";
 import { RelatedPosts } from "@/components/blog/related-posts";
 import { AuthorCard } from "@/components/blog/author-card";
-import { getPostBySlug, getAllPostSlugs, getRelatedPosts } from "@/lib/wordpress/queries";
+import { getPostBySlug, getRelatedPosts } from "@/lib/wordpress/queries";
 import { calculateReadingTime, formatDate } from "@/lib/utils/text";
 import { unstable_cache } from 'next/cache';
+import { getRevalidate } from '@/lib/config';
 
-// Dynamic revalidate is now controlled by WordPress settings per post
-// Each post can have its own revalidate time set in WordPress admin
-
-export async function generateStaticParams() {
-  const slugs = await getAllPostSlugs();
-  return slugs.map((slug) => ({ slug }));
-}
+// Dynamic params - allow non-prerendered paths
+export const dynamicParams = true;
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -36,12 +33,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     notFound();
   }
 
-  // Create cached version with ISR revalidation
+  // Create cached version with ISR revalidation from config
+  const revalidateTime = getRevalidate('posts');
   const getCachedPost = unstable_cache(
     async () => getPostBySlug(slug),
     [`post-${slug}`],
     {
-      revalidate: 300, // 5 minutes default for blog posts
+      revalidate: revalidateTime,
       tags: [`post-${slug}`]
     }
   );
@@ -98,9 +96,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               {post.author && (
                 <div className="flex items-center gap-2">
                   {post.author.avatar?.url ? (
-                    <img
+                    <Image
                       src={post.author.avatar.url}
                       alt={post.author.name}
+                      width={40}
+                      height={40}
                       className="w-10 h-10 rounded-full"
                     />
                   ) : (

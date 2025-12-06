@@ -6,7 +6,7 @@
  */
 
 import flatwpConfig from '../flatwp.config';
-import { getISRConfig, getRevalidateValue } from '@flatwp/config';
+import { getISRConfig } from '@flatwp/config';
 
 /**
  * FlatWP Configuration
@@ -57,7 +57,9 @@ export function getRevalidate(
   contentType: 'posts' | 'pages' | 'archives' | 'homepage' | string
 ): number | false | undefined {
   const { revalidate } = getContentISR(contentType);
-  return revalidate;
+  // Ensure boolean true is converted to number
+  if (revalidate === true) return 60;
+  return revalidate as number | false | undefined;
 }
 
 /**
@@ -67,7 +69,7 @@ export function getRevalidate(
  * @returns Whether the feature is enabled
  */
 export function isFeatureEnabled(
-  feature: 'preview' | 'search' | 'vercel-analytics' | 'google-analytics' | 'sentry'
+  feature: 'preview' | 'search' | 'vercel-analytics' | 'google-analytics'
 ): boolean {
   switch (feature) {
     case 'preview':
@@ -80,8 +82,6 @@ export function isFeatureEnabled(
       return config.features.analytics.vercel;
     case 'google-analytics':
       return !!config.features.analytics.google;
-    case 'sentry':
-      return !!config.features.analytics.sentry;
     default:
       return false;
   }

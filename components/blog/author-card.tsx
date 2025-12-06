@@ -7,8 +7,6 @@ import {
   Globe,
   Instagram,
   Youtube,
-  Briefcase,
-  Building,
   MapPin,
   Award,
   Mail,
@@ -37,15 +35,16 @@ const socialIcons = {
 
 /**
  * Professional info icon mapping
+ * Reserved for future use
  */
-const professionalIcons = {
-  jobTitle: Briefcase,
-  company: Building,
-  location: MapPin,
-  expertise: Award,
-  contactEmail: Mail,
-  phone: Phone,
-};
+// const professionalIcons = {
+//   jobTitle: Briefcase,
+//   company: Building,
+//   location: MapPin,
+//   expertise: Award,
+//   contactEmail: Mail,
+//   phone: Phone,
+// };
 
 /**
  * Author Card Component

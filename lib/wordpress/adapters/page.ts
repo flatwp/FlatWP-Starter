@@ -39,36 +39,40 @@ export interface Page {
  * @param wpPage - WordPress GraphQL page data
  * @returns Adapted Page object
  */
-export function adaptPage(wpPage: any): Page {
+export function adaptPage(wpPage: unknown): Page {
+  const page = wpPage as Record<string, unknown>;
+  const settings = page.flatwpSettings as Record<string, unknown> | undefined;
+  const seo = page.seo as Record<string, unknown> | undefined;
+
   return {
-    id: wpPage.id,
-    title: wpPage.title || '',
-    slug: wpPage.slug || '',
-    content: wpPage.content || '',
-    date: wpPage.date || '',
-    modified: wpPage.modified || '',
-    featuredImage: adaptImage(wpPage.featuredImage?.node),
-    blocks: (wpPage.flexibleContent || [])
-      .map((block: any) => adaptBlock(block))
+    id: (page.id as string) || '',
+    title: (page.title as string) || '',
+    slug: (page.slug as string) || '',
+    content: (page.content as string) || '',
+    date: (page.date as string) || '',
+    modified: (page.modified as string) || '',
+    featuredImage: adaptImage((page.featuredImage as Record<string, unknown> | undefined)?.node as Parameters<typeof adaptImage>[0]),
+    blocks: ((page.flexibleContent as unknown[]) || [])
+      .map((block) => adaptBlock(block))
       .filter((block: FlexibleBlock | null): block is FlexibleBlock => block !== null),
-    sidebarBlocks: (wpPage.sidebarBlocks || [])
-      .map((block: any) => adaptBlock(block))
+    sidebarBlocks: ((page.sidebarBlocks as unknown[]) || [])
+      .map((block) => adaptBlock(block))
       .filter((block: FlexibleBlock | null): block is FlexibleBlock => block !== null),
-    flatwpSettings: wpPage.flatwpSettings
+    flatwpSettings: settings
       ? {
-          hideTitle: wpPage.flatwpSettings.hideTitle || false,
-          containerWidth: wpPage.flatwpSettings.containerWidth || 'default',
-          hideHeader: wpPage.flatwpSettings.hideHeader || false,
-          hideFooter: wpPage.flatwpSettings.hideFooter || false,
-          customCssClass: wpPage.flatwpSettings.customCssClass || '',
-          showSidebar: wpPage.flatwpSettings.showSidebar || false,
+          hideTitle: (settings.hideTitle as boolean) || false,
+          containerWidth: (settings.containerWidth as 'default' | 'contained' | 'full-width') || 'default',
+          hideHeader: (settings.hideHeader as boolean) || false,
+          hideFooter: (settings.hideFooter as boolean) || false,
+          customCssClass: (settings.customCssClass as string) || '',
+          showSidebar: (settings.showSidebar as boolean) || false,
         }
       : undefined,
-    revalidateTime: wpPage.revalidateTime,
-    seo: wpPage.seo
+    revalidateTime: page.revalidateTime as number | undefined,
+    seo: seo
       ? {
-          title: wpPage.seo.title,
-          metaDesc: wpPage.seo.metaDesc,
+          title: seo.title as string | undefined,
+          metaDesc: seo.metaDesc as string | undefined,
         }
       : undefined,
   };

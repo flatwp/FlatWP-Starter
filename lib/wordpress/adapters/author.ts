@@ -83,7 +83,7 @@ export interface Author {
  * @param wpAuthor - WordPress GraphQL User object
  * @returns Application Author object
  */
-export function adaptAuthor(wpAuthor: any): Author {
+export function adaptAuthor(wpAuthor: unknown): Author {
   if (!wpAuthor) {
     return {
       id: '',
@@ -93,45 +93,53 @@ export function adaptAuthor(wpAuthor: any): Author {
     };
   }
 
+  // Cast to a more usable type
+  const author = wpAuthor as Record<string, unknown>;
+
   // Extract custom fields if they exist
   // These would come from ACF or Carbon Fields plugins
-  const customFields: AuthorCustomFields | undefined = wpAuthor.authorMeta ? {
+  const authorMeta = author.authorMeta as Record<string, unknown> | undefined;
+  const customFields: AuthorCustomFields | undefined = authorMeta ? {
     social: {
-      twitter: wpAuthor.authorMeta.twitter,
-      linkedin: wpAuthor.authorMeta.linkedin,
-      github: wpAuthor.authorMeta.github,
-      website: wpAuthor.authorMeta.website,
-      instagram: wpAuthor.authorMeta.instagram,
-      youtube: wpAuthor.authorMeta.youtube,
+      twitter: authorMeta.twitter as string | undefined,
+      linkedin: authorMeta.linkedin as string | undefined,
+      github: authorMeta.github as string | undefined,
+      website: authorMeta.website as string | undefined,
+      instagram: authorMeta.instagram as string | undefined,
+      youtube: authorMeta.youtube as string | undefined,
     },
     professional: {
-      jobTitle: wpAuthor.authorMeta.jobTitle,
-      company: wpAuthor.authorMeta.company,
-      location: wpAuthor.authorMeta.location,
-      expertise: wpAuthor.authorMeta.expertise,
+      jobTitle: authorMeta.jobTitle as string | undefined,
+      company: authorMeta.company as string | undefined,
+      location: authorMeta.location as string | undefined,
+      expertise: authorMeta.expertise as string | undefined,
     },
     contact: {
-      contactEmail: wpAuthor.authorMeta.contactEmail,
-      phone: wpAuthor.authorMeta.phone,
+      contactEmail: authorMeta.contactEmail as string | undefined,
+      phone: authorMeta.phone as string | undefined,
     },
-    hideEmail: wpAuthor.authorMeta.hideEmail,
-    featuredAuthor: wpAuthor.authorMeta.featuredAuthor,
-    authorBadge: wpAuthor.authorMeta.authorBadge,
+    hideEmail: authorMeta.hideEmail as boolean | undefined,
+    featuredAuthor: authorMeta.featuredAuthor as boolean | undefined,
+    authorBadge: authorMeta.authorBadge as string | undefined,
   } : undefined;
 
+  const avatar = author.avatar as Record<string, unknown> | undefined;
+  const posts = author.posts as Record<string, unknown> | undefined;
+  const pageInfo = posts?.pageInfo as Record<string, unknown> | undefined;
+
   return {
-    id: wpAuthor.id,
-    databaseId: wpAuthor.databaseId || 0,
-    name: wpAuthor.name || 'Anonymous',
-    firstName: wpAuthor.firstName,
-    lastName: wpAuthor.lastName,
-    nickname: wpAuthor.nickname,
-    slug: wpAuthor.slug || '',
-    email: wpAuthor.email,
-    url: wpAuthor.url,
-    description: wpAuthor.description,
-    avatar: wpAuthor.avatar?.url ? { url: wpAuthor.avatar.url } : undefined,
-    postCount: wpAuthor.posts?.pageInfo?.total,
+    id: author.id as string,
+    databaseId: (author.databaseId as number) || 0,
+    name: (author.name as string) || 'Anonymous',
+    firstName: author.firstName as string | undefined,
+    lastName: author.lastName as string | undefined,
+    nickname: author.nickname as string | undefined,
+    slug: (author.slug as string) || '',
+    email: author.email as string | undefined,
+    url: author.url as string | undefined,
+    description: author.description as string | undefined,
+    avatar: avatar?.url ? { url: avatar.url as string } : undefined,
+    postCount: pageInfo?.total as number | undefined,
     customFields,
   };
 }

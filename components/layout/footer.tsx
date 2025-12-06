@@ -87,7 +87,7 @@ export function Footer() {
               className="group flex items-center gap-3 text-sm transition-all hover:scale-105"
             >
               <div className="flex items-center gap-2 text-muted-foreground">
-                <span>Love what we're building?</span>
+                <span>Love what we&apos;re building?</span>
                 <span className="hidden sm:inline">Show your support with a star on GitHub</span>
                 <span className="sm:hidden">Star us on GitHub</span>
               </div>

@@ -150,99 +150,100 @@ export type FlexibleBlock =
  * @param wpBlock - Raw block data from WordPress GraphQL
  * @returns Typed block object
  */
-export function adaptBlock(wpBlock: any): FlexibleBlock | null {
-  if (!wpBlock || !wpBlock.fieldGroupName) {
+export function adaptBlock(wpBlock: unknown): FlexibleBlock | null {
+  const block = wpBlock as Record<string, unknown>;
+  if (!block || !block.fieldGroupName) {
     return null;
   }
 
   // Type-safe block adaptation based on fieldGroupName
-  const fieldGroupName = wpBlock.fieldGroupName as FlexibleBlock['fieldGroupName'];
+  const fieldGroupName = block.fieldGroupName as FlexibleBlock['fieldGroupName'];
 
   switch (fieldGroupName) {
     case 'hero_centered':
       return {
         fieldGroupName: 'hero_centered',
-        heading: wpBlock.heading || '',
-        subheading: wpBlock.subheading || '',
-        ctaText: wpBlock.ctaText || '',
-        ctaLink: wpBlock.ctaLink || '',
-      };
+        heading: (block.heading as string) || '',
+        subheading: (block.subheading as string) || '',
+        ctaText: (block.ctaText as string) || '',
+        ctaLink: (block.ctaLink as string) || '',
+      } as HeroCenteredBlock;
 
     case 'hero_split':
       return {
         fieldGroupName: 'hero_split',
-        heading: wpBlock.heading || '',
-        subheading: wpBlock.subheading || '',
-        ctaText: wpBlock.ctaText || '',
-        ctaLink: wpBlock.ctaLink || '',
-        image: wpBlock.image,
-        imagePosition: wpBlock.imagePosition || 'right',
-      };
+        heading: (block.heading as string) || '',
+        subheading: (block.subheading as string) || '',
+        ctaText: (block.ctaText as string) || '',
+        ctaLink: (block.ctaLink as string) || '',
+        image: block.image as Image | undefined,
+        imagePosition: (block.imagePosition as 'left' | 'right') || 'right',
+      } as HeroSplitBlock;
 
     case 'features_grid':
       return {
         fieldGroupName: 'features_grid',
-        heading: wpBlock.heading || '',
-        subheading: wpBlock.subheading,
-        features: wpBlock.features || [],
-      };
+        heading: (block.heading as string) || '',
+        subheading: block.subheading as string | undefined,
+        features: (block.features as Array<{icon: string; title: string; description: string}>) || [],
+      } as FeaturesGridBlock;
 
     case 'pricing':
       return {
         fieldGroupName: 'pricing',
-        heading: wpBlock.heading || '',
-        subheading: wpBlock.subheading,
-        tiers: (wpBlock.tiers || []).map((tier: any) => ({
-          name: tier.name || '',
-          price: tier.price || '',
-          period: tier.period || 'month',
-          description: tier.description,
+        heading: (block.heading as string) || '',
+        subheading: block.subheading as string | undefined,
+        tiers: ((block.tiers as Record<string, unknown>[]) || []).map((tier: Record<string, unknown>) => ({
+          name: (tier.name as string) || '',
+          price: (tier.price as string) || '',
+          period: (tier.period as string) || 'month',
+          description: tier.description as string | undefined,
           features: Array.isArray(tier.features)
-            ? tier.features
-            : (tier.features || '').split('\n').filter(Boolean),
-          ctaText: tier.ctaText || 'Get Started',
-          ctaLink: tier.ctaLink || '#',
-          highlighted: tier.highlighted || false,
+            ? (tier.features as string[])
+            : ((tier.features as string) || '').split('\n').filter(Boolean),
+          ctaText: (tier.ctaText as string) || 'Get Started',
+          ctaLink: (tier.ctaLink as string) || '#',
+          highlighted: (tier.highlighted as boolean) || false,
         })),
-      };
+      } as PricingBlock;
 
     case 'cta_simple':
       return {
         fieldGroupName: 'cta_simple',
-        heading: wpBlock.heading || '',
-        description: wpBlock.description || '',
-        ctaText: wpBlock.ctaText || '',
-        ctaLink: wpBlock.ctaLink || '',
-      };
+        heading: (block.heading as string) || '',
+        description: (block.description as string) || '',
+        ctaText: (block.ctaText as string) || '',
+        ctaLink: (block.ctaLink as string) || '',
+      } as CtaSimpleBlock;
 
     case 'cta_boxed':
       return {
         fieldGroupName: 'cta_boxed',
-        heading: wpBlock.heading || '',
-        description: wpBlock.description || '',
-        ctaText: wpBlock.ctaText || '',
-        ctaLink: wpBlock.ctaLink || '',
-        secondaryCtaText: wpBlock.secondaryCtaText,
-        secondaryCtaLink: wpBlock.secondaryCtaLink,
-      };
+        heading: (block.heading as string) || '',
+        description: (block.description as string) || '',
+        ctaText: (block.ctaText as string) || '',
+        ctaLink: (block.ctaLink as string) || '',
+        secondaryCtaText: block.secondaryCtaText as string | undefined,
+        secondaryCtaLink: block.secondaryCtaLink as string | undefined,
+      } as CtaBoxedBlock;
 
     case 'testimonials':
       return {
         fieldGroupName: 'testimonials',
-        heading: wpBlock.heading || '',
-        testimonials: wpBlock.testimonials || [],
-      };
+        heading: (block.heading as string) || '',
+        testimonials: (block.testimonials as Array<{quote: string; author: string; role?: string; company?: string; image?: Image}>) || [],
+      } as TestimonialsBlock;
 
     case 'content_section':
       return {
         fieldGroupName: 'content_section',
-        heading: wpBlock.heading || '',
-        content: wpBlock.content || '',
-        image: wpBlock.image,
-        imagePosition: wpBlock.imagePosition || 'right',
-        ctaText: wpBlock.ctaText,
-        ctaLink: wpBlock.ctaLink,
-      };
+        heading: (block.heading as string) || '',
+        content: (block.content as string) || '',
+        image: block.image as Image | undefined,
+        imagePosition: (block.imagePosition as 'left' | 'right' | 'top' | 'bottom') || 'right',
+        ctaText: block.ctaText as string | undefined,
+        ctaLink: block.ctaLink as string | undefined,
+      } as ContentSectionBlock;
 
     default:
       console.warn(`Unknown block type: ${fieldGroupName}`);

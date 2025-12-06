@@ -34,6 +34,7 @@ interface OptimizedImageProps extends Omit<ImageProps, 'placeholder'> {
  */
 export function OptimizedImage({ className, ...props }: OptimizedImageProps) {
   return (
+    // eslint-disable-next-line jsx-a11y/alt-text
     <Image
       {...props}
       className={cn('object-cover', className)}

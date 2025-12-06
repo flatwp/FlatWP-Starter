@@ -28,7 +28,7 @@ export function PreviewBanner() {
               Preview Mode Active
             </p>
             <p className="text-white/90 text-xs md:text-sm">
-              You're viewing unpublished changes. This content is not visible to visitors.
+              You&apos;re viewing unpublished changes. This content is not visible to visitors.
             </p>
           </div>
         </div>

@@ -76,7 +76,7 @@ export function BlockRenderer({ blocks }: BlockRendererProps) {
 
           default:
             // Log unknown block types for debugging
-            console.warn(`Unknown block type: ${(block as any).fieldGroupName}`);
+            console.warn(`Unknown block type: ${block && typeof block === 'object' && 'fieldGroupName' in block ? (block as { fieldGroupName: string }).fieldGroupName : 'unknown'}`);
             return null;
         }
       })}

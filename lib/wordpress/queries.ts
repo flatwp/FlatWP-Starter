@@ -24,9 +24,9 @@ import {
   GetAllTagsDocument,
   GetRelatedPostsByCategoryDocument,
   GetRelatedPostsByTagDocument,
-  GetAllPageSlugsDocument,
-  GetPageBySlugDocument,
-  GetPageByIdDocument,
+  // GetAllPageSlugsDocument,  // Needs GraphQL codegen
+  // GetPageBySlugDocument,     // Needs GraphQL codegen
+  // GetPageByIdDocument,       // Needs GraphQL codegen
   // GetFeaturedPostsDocument, // Not available yet - using client-side filtering fallback
   // GetRegularPostsDocument,  // Not available yet - using client-side filtering fallback
 } from './__generated__/graphql';
@@ -604,7 +604,7 @@ export async function getAllAuthorSlugs(): Promise<string[]> {
 /**
  * Get author by slug with all posts
  */
-export async function getAuthorBySlug(slug: string): Promise<any | null> {
+export async function getAuthorBySlug(slug: string): Promise<unknown | null> {
   const client = getClient();
 
   try {
@@ -902,6 +902,8 @@ export async function getRegularPosts(
  * @returns Array of page slugs
  */
 export async function getAllPageSlugs(): Promise<string[]> {
+  // TODO: Uncomment after running GraphQL codegen to generate GetAllPageSlugsDocument
+  /*
   const client = getClient();
 
   try {
@@ -926,6 +928,8 @@ export async function getAllPageSlugs(): Promise<string[]> {
     console.error('Error fetching page slugs:', error);
     throw new Error('Failed to fetch page slugs');
   }
+  */
+  return [];
 }
 
 /**
@@ -940,6 +944,8 @@ export async function getPageBySlug(
   slug: string,
   revalidate: number = 3600
 ): Promise<Page | null> {
+  // TODO: Uncomment after running GraphQL codegen to generate GetPageBySlugDocument
+  /*
   const client = getClient();
 
   try {
@@ -962,6 +968,8 @@ export async function getPageBySlug(
     console.error(`Error fetching page with slug "${slug}":`, error);
     throw new Error(`Failed to fetch page: ${slug}`);
   }
+  */
+  return null;
 }
 
 /**
@@ -971,6 +979,8 @@ export async function getPageBySlug(
  * @returns Page object or null if not found
  */
 export async function getPageById(id: string): Promise<Page | null> {
+  // TODO: Uncomment after running GraphQL codegen to generate GetPageByIdDocument
+  /*
   const client = getClient();
 
   try {
@@ -993,4 +1003,6 @@ export async function getPageById(id: string): Promise<Page | null> {
     console.error(`Error fetching page with ID "${id}":`, error);
     throw new Error(`Failed to fetch page: ${id}`);
   }
+  */
+  return null;
 }

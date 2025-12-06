@@ -4,14 +4,12 @@ import { ArrowLeft, FolderOpen } from "lucide-react";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { BlogPostCard } from "@/components/blog/blog-post-card";
-import { getPostsByCategory, getAllCategorySlugs, type TaxonomyTerm } from "@/lib/wordpress/queries";
+import { getPostsByCategory, type TaxonomyTerm } from "@/lib/wordpress/queries";
 
 export const revalidate = 300; // Revalidate every 5 minutes
 
-export async function generateStaticParams() {
-  const slugs = await getAllCategorySlugs();
-  return slugs.map((slug) => ({ slug }));
-}
+// Dynamic params - allow non-prerendered paths
+export const dynamicParams = true;
 
 interface CategoryArchivePageProps {
   params: Promise<{

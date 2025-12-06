@@ -159,7 +159,7 @@ export function Search({
                 'Type at least 2 characters to search'
               ) : (
                 <>
-                  No results found for "<span className="font-medium">{query}</span>"
+                  No results found for &quot;<span className="font-medium">{query}</span>&quot;
                 </>
               )}
             </div>
