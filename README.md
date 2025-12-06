@@ -4,10 +4,12 @@
 
 ## Features
 
-- ⚡ **Next.js 15** with App Router and Server Components
+- ⚡ **Next.js 15.5.6** with App Router and Server Components
+- ⚛️ **React 19** for modern component development
 - 🎨 **TailwindCSS v4** for modern, utility-first styling
 - 📝 **TypeScript** strict mode for type safety
 - 🔄 **ISR with on-demand revalidation** for fresh content without rebuilds
+- 🚀 **Dynamic page generation** at runtime for flexible content delivery
 - 🔍 **Client-side search** with Fuse.js
 - 🎯 **GraphQL** with full type generation via GraphQL Code Generator
 - 🖼️ **Optimized images** with automatic WebP/AVIF conversion
@@ -19,7 +21,7 @@
 
 ## Prerequisites
 
-- **Node.js** 18+ and npm 9+
+- **Node.js** 20+ and npm 10+ (or pnpm 9+)
 - **WordPress** 6.4+ with the following plugins:
   - [WPGraphQL](https://www.wpgraphql.com/) (required)
   - [WPGraphQL CORS](https://github.com/funkhaus/wp-graphql-cors) (recommended)
@@ -90,13 +92,15 @@ This will:
 - Generate TypeScript types in `lib/wordpress/__generated__/`
 - Enable full type safety for all queries
 
+**Note:** This command requires your WordPress site to be accessible. Ensure `NEXT_PUBLIC_WORDPRESS_API_URL` is set correctly in `.env.local`.
+
 ### 5. Start Development Server
 
 ```bash
 npm run dev
 ```
 
-Visit [http://localhost:3010](http://localhost:3010) to see your site.
+Visit [http://localhost:3005](http://localhost:3005) to see your site.
 
 ## WordPress Setup
 
@@ -128,7 +132,7 @@ To get started quickly with example pages and posts:
 
 In WordPress admin (Settings → FlatWP):
 
-1. **Next.js Site URL**: `http://localhost:3010` (or your production URL)
+1. **Next.js Site URL**: `http://localhost:3005` (or your production URL)
 2. **Revalidation Secret**: Same value as `REVALIDATION_SECRET` in `.env.local`
 3. **Enable Webhooks**: Check this box to enable automatic revalidation
 
@@ -343,11 +347,195 @@ export const RENDERING_STRATEGY = {
    }
    ```
 
+## Troubleshooting
+
+### Common Development Issues
+
+#### GraphQL Types Not Generating
+
+**Problem**: `npm run graphql:codegen` fails with connection errors
+
+**Solution**:
+1. Verify WordPress GraphQL endpoint is accessible:
+   ```bash
+   curl https://your-wordpress-site.com/graphql
+   ```
+2. Check `.env.local` has correct `NEXT_PUBLIC_WORDPRESS_API_URL`
+3. Ensure WPGraphQL plugin is activated in WordPress
+4. Try exporting the variable manually:
+   ```bash
+   export NEXT_PUBLIC_WORDPRESS_API_URL=https://your-site.com/graphql
+   npm run graphql:codegen
+   ```
+5. Check CORS settings if running locally (WPGraphQL CORS plugin helps)
+
+#### Build Errors with Missing Dependencies
+
+**Problem**: Build fails with module not found errors
+
+**Solution**:
+```bash
+# Clean install dependencies
+rm -rf node_modules package-lock.json
+npm install
+
+# Or use pnpm for better workspace support
+npm install -g pnpm
+pnpm install
+```
+
+#### Dynamic Import Warnings
+
+**Problem**: Console warnings about dynamic imports during build
+
+**Solution**: These warnings are expected for dynamically loaded ACF blocks. They don't affect functionality. To reduce warnings:
+- Ensure all block components are properly exported
+- Check that block names in GraphQL match component file names
+
+#### Revalidation Not Working
+
+**Problem**: Content updates in WordPress don't reflect on site
+
+**Solution**:
+1. Verify FlatWP Companion plugin is installed and activated
+2. Check webhook settings in WordPress (Settings → FlatWP):
+   - Next.js URL should match your site URL
+   - Revalidation secret should match `.env.local`
+   - Webhooks should be enabled
+3. Test webhook manually:
+   ```bash
+   curl -X POST https://your-site.com/api/revalidate \
+     -H "Content-Type: application/json" \
+     -d '{"secret":"your-secret","paths":["/blog/test-post"]}'
+   ```
+4. Check deployment logs for webhook errors (Vercel/Netlify dashboard)
+
+#### Preview Mode Not Working
+
+**Problem**: Preview button shows stale or missing content
+
+**Solution**:
+1. Verify `PREVIEW_SECRET` is set in `.env.local`
+2. Configure preview settings in WordPress (FlatWP plugin)
+3. Check that draft posts are accessible via GraphQL:
+   - In WPGraphQL settings, ensure draft post types are enabled
+4. Clear browser cookies and try again
+5. Check browser console for error messages
+
+#### Images Not Loading
+
+**Problem**: WordPress images show as broken or fail to load
+
+**Solution**:
+1. Verify WordPress media library URLs are publicly accessible
+2. Update `next.config.ts` with your WordPress domain:
+   ```typescript
+   images: {
+     remotePatterns: [
+       {
+         protocol: 'https',
+         hostname: 'your-wordpress-site.com',
+       },
+     ],
+   }
+   ```
+3. Check that images exist in WordPress media library
+4. Verify CORS headers allow image loading from WordPress
+
+#### Port Already in Use
+
+**Problem**: `npm run dev` fails because port 3010 is already in use
+
+**Solution**:
+```bash
+# Use a different port
+npm run dev -- -p 3001
+
+# Or find and kill the process using port 3010
+lsof -ti:3010 | xargs kill -9
+```
+
+#### Type Errors After GraphQL Schema Changes
+
+**Problem**: TypeScript errors after updating WordPress schema
+
+**Solution**:
+```bash
+# Regenerate GraphQL types
+npm run graphql:codegen
+
+# Clean and rebuild
+npm run clean
+npm install
+npm run build
+```
+
+### Performance Issues
+
+#### Slow Build Times
+
+**Problem**: `npm run build` takes too long
+
+**Solutions**:
+1. **Reduce static page generation**: Comment out `generateStaticParams` for large archives
+2. **Use dynamic rendering**: Switch high-volume pages to dynamic mode
+3. **Optimize images**: Compress images before uploading to WordPress
+4. **Update rendering strategy** in `config/rendering-strategy.ts`:
+   ```typescript
+   // Disable full static generation for large archives
+   posts: {
+     revalidate: 'on-demand', // Instead of generateStaticParams
+   }
+   ```
+
+#### Slow Page Loads in Production
+
+**Problem**: Pages load slowly despite optimizations
+
+**Solutions**:
+1. Check WordPress GraphQL query performance
+2. Enable Redis/object caching in WordPress
+3. Use a CDN for WordPress media
+4. Optimize GraphQL queries (remove unnecessary fields)
+5. Enable Vercel Analytics to identify bottlenecks
+
+### Deployment Issues
+
+#### Vercel Build Timeout
+
+**Problem**: Deployment fails with build timeout
+
+**Solution**:
+1. Reduce number of static pages generated
+2. Split large builds across multiple deploys
+3. Use incremental static regeneration (ISR) instead of full static
+4. Contact Vercel support for build time limit increase
+
+#### Environment Variables Not Working
+
+**Problem**: Site works locally but fails in production
+
+**Solution**:
+1. Verify all environment variables are set in deployment platform
+2. Check variable names are exactly the same (case-sensitive)
+3. Ensure `NEXT_PUBLIC_*` prefix for client-side variables
+4. Redeploy after adding/changing environment variables
+
+#### 404 Errors on Dynamic Routes
+
+**Problem**: Blog posts return 404 in production
+
+**Solution**:
+1. Verify WordPress GraphQL is accessible from deployment server
+2. Check that posts exist and are published in WordPress
+3. Ensure `generateStaticParams` is implemented or page is dynamic
+4. Check deployment logs for GraphQL errors
+
 ## Scripts Reference
 
 ```bash
 # Development
-npm run dev          # Start dev server on port 3010
+npm run dev          # Start dev server on port 3005
 npm run build        # Build for production
 npm run start        # Start production server
 npm run lint         # Run ESLint
@@ -359,6 +547,8 @@ npm run graphql:codegen  # Generate GraphQL types
 # Maintenance
 npm run clean        # Remove build artifacts and dependencies
 ```
+
+**Note:** The development server runs on port **3005** by default (configured in package.json).
 
 ## Contributing
 
